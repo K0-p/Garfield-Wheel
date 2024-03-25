@@ -45,6 +45,8 @@
 /* Add whatever else you need here! */
 #include "./lib/RGB/RGB.h"
 
+#include "gyro.h"
+
 int main(void) {
     /* Disable interrupts for initialization. */
     DisableInterrupts();
@@ -88,9 +90,18 @@ int main(void) {
     ST7735_OutString("Starting...\n");
     UART_OutString("Starting...\r\n");
 
+		float gvalues[6];
+
     while (1) {
         /* TODO: Write your code here! */
         WaitForInterrupt();
+				
+				//read gyro data  --  can move to interrupts later
+				gvalues = gyromain();
+			
+				//call usb/uart handlers after having read data
+				//USB();
+				//UART();
     }
     return 1;
 }
