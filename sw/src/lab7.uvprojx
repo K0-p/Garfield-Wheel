@@ -49,7 +49,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\Objects\</OutputDirectory>
-          <OutputName>lab7</OutputName>
+          <OutputName>Lab5</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
@@ -112,7 +112,7 @@
           <SimDllName>SARMCM3.DLL</SimDllName>
           <SimDllArguments>  -MPU</SimDllArguments>
           <SimDlgDll>DCM.DLL</SimDlgDll>
-          <SimDlgDllArguments>-pCM4</SimDlgDllArguments>
+          <SimDlgDllArguments>-pCM4 -dLaunchPadDLL</SimDlgDllArguments>
           <TargetDllName>SARMCM3.DLL</TargetDllName>
           <TargetDllArguments> -MPU</TargetDllArguments>
           <TargetDlgDll>TCM.DLL</TargetDlgDll>
@@ -134,11 +134,11 @@
             <RunIndependent>0</RunIndependent>
             <UpdateFlashBeforeDebugging>1</UpdateFlashBeforeDebugging>
             <Capability>1</Capability>
-            <DriverSelection>-1</DriverSelection>
+            <DriverSelection>4096</DriverSelection>
           </Flash1>
           <bUseTDR>1</bUseTDR>
           <Flash2>BIN\UL2CM3.DLL</Flash2>
-          <Flash3></Flash3>
+          <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
           <pFcarmOut></pFcarmOut>
           <pFcarmGrp></pFcarmGrp>
@@ -190,7 +190,7 @@
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>0</useUlib>
+            <useUlib>1</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
@@ -260,17 +260,17 @@
                 <Size>0x0</Size>
               </XRAM>
               <OCR_RVCT1>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT1>
               <OCR_RVCT2>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT2>
               <OCR_RVCT3>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT3>
@@ -280,7 +280,7 @@
                 <Size>0x40000</Size>
               </OCR_RVCT4>
               <OCR_RVCT5>
-                <Type>0</Type>
+                <Type>1</Type>
                 <StartAddress>0x0</StartAddress>
                 <Size>0x0</Size>
               </OCR_RVCT5>
@@ -323,11 +323,11 @@
             <PlainCh>0</PlainCh>
             <Ropi>0</Ropi>
             <Rwpi>0</Rwpi>
-            <wLevel>2</wLevel>
+            <wLevel>3</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
-            <uC99>1</uC99>
-            <uGnu>1</uGnu>
+            <uC99>0</uC99>
+            <uGnu>0</uGnu>
             <useXO>0</useXO>
             <v6Lang>3</v6Lang>
             <v6LangP>3</v6LangP>
@@ -338,9 +338,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define></Define>
+              <Define>rvmdk PART_LM4F120H5QR</Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>./;../</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -383,34 +383,151 @@
       <Groups>
         <Group>
           <GroupName>inc</GroupName>
+          <Files>
+            <File>
+              <FileName>Dump.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\inc\Dump.c</FilePath>
+            </File>
+            <File>
+              <FileName>LaunchPad.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\inc\LaunchPad.c</FilePath>
+            </File>
+            <File>
+              <FileName>LED.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\inc\LED.c</FilePath>
+            </File>
+            <File>
+              <FileName>PLL.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\inc\PLL.c</FilePath>
+            </File>
+            <File>
+              <FileName>ST7735.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\inc\ST7735.c</FilePath>
+            </File>
+            <File>
+              <FileName>startup.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\inc\startup.s</FilePath>
+            </File>
+            <File>
+              <FileName>Timer0A.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\inc\Timer0A.c</FilePath>
+            </File>
+            <File>
+              <FileName>UART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\inc\UART.c</FilePath>
+            </File>
+            <File>
+              <FileName>Unified_Port_Init.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\inc\Unified_Port_Init.c</FilePath>
+            </File>
+            <File>
+              <FileName>DAC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\inc\DAC.c</FilePath>
+            </File>
+            <File>
+              <FileName>DAC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\inc\DAC.h</FilePath>
+            </File>
+            <File>
+              <FileName>Switch.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\inc\Switch.c</FilePath>
+            </File>
+            <File>
+              <FileName>Switch.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\inc\Switch.h</FilePath>
+            </File>
+            <File>
+              <FileName>music.txt</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\music.txt</FilePath>
+            </File>
+            <File>
+              <FileName>Timer1A.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\inc\Timer1A.c</FilePath>
+            </File>
+            <File>
+              <FileName>Timer1A.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\inc\Timer1A.h</FilePath>
+            </File>
+            <File>
+              <FileName>SysTick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\inc\SysTick.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>lib</GroupName>
+          <Files>
+            <File>
+              <FileName>RGB.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\lib\RGB\RGB.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>src</GroupName>
           <Files>
             <File>
-              <FileName>lab.c</FileName>
+              <FileName>Lab7.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\lab.c</FilePath>
+              <FilePath>.\Lab7.c</FilePath>
+            </File>
+            <File>
+              <FileName>FIFO.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\temp files\FIFO.h</FilePath>
             </File>
             <File>
               <FileName>gyro.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\gyro.c</FilePath>
-            </File>
-            <File>
-              <FileName>gyro_depends.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\gyro_depends.h</FilePath>
+              <FilePath>..\..\temp files\gyro.c</FilePath>
             </File>
             <File>
               <FileName>gyro.h</FileName>
               <FileType>5</FileType>
-              <FilePath>.\gyro.h</FilePath>
+              <FilePath>..\..\temp files\gyro.h</FilePath>
+            </File>
+            <File>
+              <FileName>gyro_depends.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\temp files\gyro_depends.h</FilePath>
+            </File>
+            <File>
+              <FileName>lab.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\temp files\lab.h</FilePath>
+            </File>
+            <File>
+              <FileName>USB.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\temp files\USB.c</FilePath>
+            </File>
+            <File>
+              <FileName>UART0int.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\ValvanoWareTM4C123v6\ValvanoWareTM4C123v6\inc\UART0int.h</FilePath>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>doc</GroupName>
         </Group>
       </Groups>
     </Target>
@@ -425,7 +542,7 @@
   <LayerInfo>
     <Layers>
       <Layer>
-        <LayName>lab7</LayName>
+        <LayName>Lab5</LayName>
         <LayPrjMark>1</LayPrjMark>
       </Layer>
     </Layers>
