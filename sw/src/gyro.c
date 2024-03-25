@@ -9,12 +9,8 @@ void I2C3_Init(void);
 char I2C3_Wr(int slaveAddr, char memAddr, char data);
 char I2C3_Rd(int slaveAddr, char memAddr, int byteCount, char* data);
 void Delay(unsigned long counter);
-void uart5_init(void);
-void UART5_Transmitter(unsigned char data);
-void printstring(char *str);
 void MPU6050_Init(void);
 
-char msg[20];
 float[] gyromain(void)
 {
   int  accX, accY, accZ, GyroX, GyroY, GyroZ, Temper; 
@@ -26,13 +22,13 @@ float[] gyromain(void)
 	Delay(1000);
   uart5_init();
  I2C3_Rd(0x68,ACCEL_XOUT_H, 14, sensordata);
- accX = (int) ( (sensordata[0] << 8 ) |sensordata[1] );
- accY = (int) ( (sensordata[2] << 8 ) |sensordata[3] );
- accZ = (int) ( (sensordata[4] << 8 ) |sensordata[5] );
- Temper = (int) ( (sensordata[6] << 8 ) |sensordata[7] );
- GyroX = (int) ( (sensordata[8] << 8 ) |sensordata[9] );
- GyroY = (int) ( (sensordata[10] << 8 ) |sensordata[11] );
- GyroZ = (int) ( (sensordata[12] << 8 ) |sensordata[13] );
+ accX = (int) ( (sensordata[0] << 8 ) | sensordata[1] );
+ accY = (int) ( (sensordata[2] << 8 ) | sensordata[3] );
+ accZ = (int) ( (sensordata[4] << 8 ) | sensordata[5] );
+ Temper = (int) ( (sensordata[6] << 8 ) | sensordata[7] );
+ GyroX = (int) ( (sensordata[8] << 8 ) | sensordata[9] );
+ GyroY = (int) ( (sensordata[10] << 8 ) | sensordata[11] );
+ GyroZ = (int) ( (sensordata[12] << 8 ) | sensordata[13] );
  
 		
    // Convert The Readings
@@ -50,6 +46,8 @@ float[] gyromain(void)
 		 return reads;
 }
 
+
+
 void MPU6050_Init(void)
 {
  I2C3_Wr(0x68,SMPLRT_DIV, 0x07);
@@ -61,27 +59,8 @@ void MPU6050_Init(void)
 
 }
 
-void uart5_init(void)
-{
-	
-	  SYSCTL->RCGCUART |= 0x20;  /* enable clock to UART5 */
-    SYSCTL->RCGCGPIO |= 0x10;  /* enable clock to PORTE for PE4/Rx and RE5/Tx */
-    Delay(1);
-    /* UART0 initialization */
-    UART5->CTL = 0;         /* UART5 module disbable */
-    UART5->IBRD = 104;      /* for 9600 baud rate, integer = 104 */
-    UART5->FBRD = 11;       /* for 9600 baud rate, fractional = 11*/
-    UART5->CC = 0;          /*select system clock*/
-    UART5->LCRH = 0x60;     /* data lenght 8-bit, not parity bit, no FIFO */
-    UART5->CTL = 0x301;     /* Enable UART5 module, Rx and Tx */
 
-    /* UART5 TX5 and RX5 use PE4 and PE5. Configure them digital and enable alternate function */
-    GPIOE->DEN = 0x30;      /* set PE4 and PE5 as digital */
-    GPIOE->AFSEL = 0x30;    /* Use PE4,PE5 alternate function */
-    GPIOE->AMSEL = 0;    /* Turn off analg function*/
-    GPIOE->PCTL = 0x00110000;     /* configure PE4 and PE5 for UART */
-	
-}
+
 void I2C3_Init(void)
 {
 SYSCTL->RCGCGPIO  |= 0x00000008 ; // Enable the clock for port D
@@ -183,19 +162,7 @@ char I2C3_Rd(int slaveAddr, char memAddr, int byteCount, char* data)
     return 0;       /* no error */
 }
 		
-void UART5_Transmitter(unsigned char data)  
-{
-    while((UART5->FR & (1<<5)) != 0); /* wait until Tx buffer not full */
-    UART5->DR = data;                  /* before giving it another byte */
-}
 
-void printstring(char *str)
-{
-  while(*str)
-	{
-		UART5_Transmitter(*(str++));
-	}
-}
 
 void Delay(unsigned long counter)
 {
