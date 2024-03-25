@@ -30,21 +30,21 @@
 #include <stdint.h>
 
 /* Register definitions. */
-#include "./inc/tm4c123gh6pm.h"
+#include "../inc/tm4c123gh6pm.h"
 /* Clocking. */
-#include "./inc/PLL.h"
+#include "../inc/PLL.h"
 /* Clock delay and interrupt control. */
-#include "./inc/CortexM.h"
+#include "../inc/CortexM.h"
 /* Initialization of all the pins. */
-#include "./inc/Unified_Port_Init.h"
+#include "../inc/Unified_Port_Init.h"
 /* Talking to PC via UART. */
-#include "./inc/UART.h"
+#include "../inc/UART.h"
 /* ST7735 display. */
-#include "./inc/ST7735.h"
+#include "../inc/ST7735.h"
 
 /* Add whatever else you need here! */
-#include "./lib/RGB/RGB.h"
-
+#include "../lib/RGB/RGB.h"
+#include "TM4C123.h"                    // Device header
 #include "gyro.h"
 
 int main(void) {
