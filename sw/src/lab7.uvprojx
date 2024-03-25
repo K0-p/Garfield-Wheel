@@ -492,37 +492,37 @@
             <File>
               <FileName>FIFO.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\temp files\FIFO.h</FilePath>
+              <FilePath>.\FIFO.h</FilePath>
             </File>
             <File>
               <FileName>gyro.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\temp files\gyro.c</FilePath>
+              <FilePath>.\gyro.c</FilePath>
             </File>
             <File>
               <FileName>gyro.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\temp files\gyro.h</FilePath>
+              <FilePath>.\gyro.h</FilePath>
             </File>
             <File>
               <FileName>gyro_depends.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\temp files\gyro_depends.h</FilePath>
+              <FilePath>.\gyro_depends.h</FilePath>
             </File>
             <File>
               <FileName>lab.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\temp files\lab.h</FilePath>
+              <FilePath>.\lab.h</FilePath>
             </File>
             <File>
               <FileName>USB.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\temp files\USB.c</FilePath>
+              <FilePath>.\USB.c</FilePath>
             </File>
             <File>
               <FileName>UART0int.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\..\..\..\ValvanoWareTM4C123v6\ValvanoWareTM4C123v6\inc\UART0int.h</FilePath>
+              <FilePath>..\inc\UART0int.h</FilePath>
             </File>
           </Files>
         </Group>

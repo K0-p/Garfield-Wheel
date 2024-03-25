@@ -5,6 +5,8 @@
 #include "./inc/tm4c123gh6pm.h"
 #include "gyro_depends.h"
 
+#include "TM4C123GH6PM.h"
+
 void I2C3_Init(void);
 char I2C3_Wr(int slaveAddr, char memAddr, char data);
 char I2C3_Rd(int slaveAddr, char memAddr, int byteCount, char* data);
@@ -20,7 +22,6 @@ float[] gyromain(void)
 	Delay(1000);
 	MPU6050_Init();
 	Delay(1000);
-  uart5_init();
  I2C3_Rd(0x68,ACCEL_XOUT_H, 14, sensordata);
  accX = (int) ( (sensordata[0] << 8 ) | sensordata[1] );
  accY = (int) ( (sensordata[2] << 8 ) | sensordata[3] );
