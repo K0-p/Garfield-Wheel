@@ -405,6 +405,11 @@
               <FileType>5</FileType>
               <FilePath>.\gyro_depends.h</FilePath>
             </File>
+            <File>
+              <FileName>gyro.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\gyro.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>

@@ -15,11 +15,10 @@ void printstring(char *str);
 void MPU6050_Init(void);
 
 char msg[20];
-float reads[6];
 float[] gyromain(void)
 {
   int  accX, accY, accZ, GyroX, GyroY, GyroZ, Temper; 
-	float AX, AY, AZ, t, GX, GY, GZ;
+	float reads[7];	//AX, AY, AZ, t, GX, GY, GZ;
 	char sensordata[14];
 	I2C3_Init();
 	Delay(1000);
@@ -37,31 +36,15 @@ float[] gyromain(void)
  
 		
    // Convert The Readings
-  AX = (float)accX/16384.0;
-	reads[0] = AX;
-  AY = (float)accY/16384.0;
-	reads[0] = AY;
-  AZ = (float)accZ/16384.0;
-	reads[0] = AZ;
-  GX = (float)GyroX/131.0;
-	reads[0] = GX;
-  GY = (float)GyroX/131.0;
-	reads[0] = GY;
-  GZ = (float)GyroX/131.0;
-	reads[0] = GZ;
-  t = ((float)Temper/340.00)+36.53;
-     sprintf(msg,"Gx = %.2f \t",GX);
-     printstring(msg);
-		 sprintf(msg,"Gy = %.2f \t",GY);
-     printstring(msg);
-		 sprintf(msg,"Gz  = %.2f \t",GZ);
-     printstring(msg);
-		 sprintf(msg,"Ax  = %.2f \t",AX);
-     printstring(msg);
-		 sprintf(msg,"Ay  = %.2f \t",AY);
-     printstring(msg);
-		 sprintf(msg,"Ax  = %.2f \r\n",AZ);
-     printstring(msg);
+	reads[0] = (float)accX/16384.0;
+	reads[1] = (float)accY/16384.0;
+	reads[2] = (float)accZ/16384.0;
+	reads[3] = ((float)Temper/340.00)+36.53;
+	reads[4] = (float)GyroX/131.0;
+	reads[5] = (float)GyroY/131.0;
+	reads[6] = (float)GyroZ/131.0;
+	//reads[5] = (float)GyroX/131.0;
+	//reads[6] = (float)GyroX/131.0;
 		 
 		 //return array of gyro values
 		 return reads;
@@ -213,6 +196,7 @@ void printstring(char *str)
 		UART5_Transmitter(*(str++));
 	}
 }
+
 void Delay(unsigned long counter)
 {
 	unsigned long i = 0;
