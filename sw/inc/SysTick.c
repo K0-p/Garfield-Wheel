@@ -43,9 +43,11 @@ void SysTick_Init(void){
   NVIC_ST_CTRL_R = 0;                   // disable SysTick during setup
   NVIC_ST_RELOAD_R = NVIC_ST_RELOAD_M;  // maximum reload value
   NVIC_ST_CURRENT_R = 0;                // any write to current clears it
+	NVIC_ST_CTRL_R = 0x00000005;
                                         // enable SysTick with core clock
-  NVIC_ST_CTRL_R = NVIC_ST_CTRL_ENABLE+NVIC_ST_CTRL_CLK_SRC;
+  //NVIC_ST_CTRL_R = NVIC_ST_CTRL_ENABLE+NVIC_ST_CTRL_CLK_SRC;
 }
+
 // Time delay using busy wait.
 // The delay parameter is in units of the core clock. (units of 20 nsec for 50 MHz clock)
 //void SysTick_Wait(uint32_t delay){
@@ -63,6 +65,7 @@ void SysTick_Wait(uint32_t delay){
   while((NVIC_ST_CTRL_R&0x00010000)==0){ // wait for count flag
   }
 }
+
 // Time delay using busy wait.
 // This assumes 16 MHz system clock.
 void SysTick_Wait10ms(uint32_t delay){
@@ -84,7 +87,7 @@ void SysTick50_Wait10ms(uint32_t delay){
 void SysTick80_Wait10ms(uint32_t delay){
   uint32_t i;
   for(i=0; i<delay; i++){
-    SysTick_Wait(800000);  // wait 10ms (assumes 80MHz clock)
+    SysTick_Wait(80);  // wait 1 microsecond
   }
 }
 

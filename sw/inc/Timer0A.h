@@ -26,6 +26,11 @@
 #define __TIMER0AINTS_H__
 #include <stdint.h>
 
+extern uint32_t chiefidx;
+extern uint32_t peener;
+extern uint32_t testiclehernia;
+extern uint32_t envelope;
+
 // ***************** Timer0A_Init ****************
 // Activate Timer0A interrupts to run user task periodically
 // Inputs:  task is a pointer to a user function
@@ -34,5 +39,6 @@
 // Outputs: none
 void Timer0A_Init(void(*task)(void), uint32_t period, uint32_t priority);
 void Timer0A_Stop(void);
+void fart(void);
 
 #endif // __TIMER0AINTS_H__

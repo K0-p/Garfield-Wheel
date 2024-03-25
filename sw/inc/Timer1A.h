@@ -22,6 +22,10 @@
  http://users.ece.utexas.edu/~valvano/
  */
 
+
+#include <stdint.h>
+
+
 #ifndef __TIMER1INTS_H__ // do not include more than once
 #define __TIMER1INTS_H__
 
@@ -31,8 +35,9 @@
 //          period in units (1/clockfreq)
 //          priority 0 (highest) to 7 (lowest)
 // Outputs: none
-void Timer1A_Init(void(*task)(void), uint32_t period, uint32_t priority);
+void Timer1A_Init(uint32_t period, uint32_t priority);
 
 void Timer1A_Stop(void);
 
+void Timer1A_Start(void);
 #endif // __TIMER2INTS_H__

@@ -28,6 +28,7 @@
 #include <stdint.h>
 #include "../inc/tm4c123gh6pm.h"
 #include "../inc/CortexM.h"
+#include "../inc/Timer0A.h"
 
 #define NVIC_EN0_INT19          0x00080000  // Interrupt 19 enable
 #define TIMER_CFG_16_BIT        0x00000004  // 16-bit timer configuration,
@@ -42,9 +43,19 @@
                                             // Interrupt
 #define TIMER_TAILR_TAILRL_M    0x0000FFFF  // GPTM TimerA Interval Load
                                             // Register Low
+																						
+#define PF3   (*((volatile uint32_t *)0x40025020)) // GREEN LED
 
 
 static void (*PeriodicTask0)(void);   // user function
+uint32_t chiefidx;
+uint32_t peener;
+uint32_t testiclehernia;
+
+uint32_t cc2;
+uint32_t cc4;
+
+uint32_t envelope;
 
 // ***************** Timer0A_Init ****************
 // Activate Timer0A interrupts to run user task periodically
@@ -65,6 +76,11 @@ void Timer0A_Init(void(*task)(void), uint32_t period, uint32_t priority){
   NVIC_PRI4_R = (NVIC_PRI4_R&0x00FFFFFF)|(priority<<29); 
   NVIC_EN0_R = NVIC_EN0_INT19;     // 9) enable interrupt 19 in NVIC
   TIMER0_CTL_R |= 0x00000001;      // 10) enable timer0A
+	chiefidx = 0;
+	testiclehernia = 2;
+	cc2 = 2;
+	cc4 = 4;
+	envelope = 0;
 }
 
 void Timer0A_Handler(void){
@@ -74,4 +90,37 @@ void Timer0A_Handler(void){
 void Timer0A_Stop(void){
   NVIC_EN0_R = 1<<19;            // 9) disable interrupt 19 in NVIC
   TIMER0_CTL_R = 0x00000000;     // 10) disable timer0A
+}
+
+void fart(void){
+	if(testiclehernia == 2){
+		cc2 --;
+		if(cc2 == 0){
+			cc2 = 2;
+		}
+		else return;
+	}
+	if(testiclehernia == 4){
+		cc4 --;
+		if(cc4 == 0){
+			cc4 = 4;
+		}
+		else return;
+	}
+	if(peener){
+		//envelope = 0;
+		PF3 ^= 0x08;
+		chiefidx ++;
+		if(chiefidx > 28) chiefidx = 0;
+		uint32_t volatile time;
+		uint32_t n = 25;
+    while (n){
+        time = 727240 * 2 / 91;  // 10msec
+        while (time){
+            --time;
+        }
+        --n;
+    }
+	}
+	return;
 }

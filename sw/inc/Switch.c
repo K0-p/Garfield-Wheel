@@ -27,13 +27,21 @@
 #include <stdint.h>
 #include "../inc/tm4c123gh6pm.h"
 #include "../inc/CortexM.h"
-#define PF4                     (*((volatile uint32_t *)0x40025040))
+#include "../inc/Timer0A.h"
+#define PF0   (*((volatile uint32_t *)0x40025004)) // Left Button
+#define PF4   (*((volatile uint32_t *)0x40025040))
 
 
 volatile static unsigned long Touch;     // true on touch
 volatile static unsigned long Release;   // true on release
 volatile static unsigned long Last;      // previous
+
+volatile static unsigned long Touch2;     // true on touch
+volatile static unsigned long Release2;   // true on release
+volatile static unsigned long Last2;      // previous
+
 void (*TouchTask)(void);    // user function to be executed on touch
+void (*TouchTask2)(void);    // user function to be executed on touch
 void (*ReleaseTask)(void);  // user function to be executed on release
 static void Timer0Arm(void){
   TIMER0_CTL_R = 0x00000000;    // 1) disable TIMER0A during setup
@@ -59,30 +67,35 @@ static void GPIOArm(void){
 // Inputs:  pointer to a function to call on touch (falling edge),
 //          pointer to a function to call on release (rising edge)
 // Outputs: none 
-void Switch_Init(void(*touchtask)(void), void(*releasetask)(void)){
+void Switch_Init(void(*touchtask)(void), void(*touchtask2)(void)){
   // **** general initialization ****
   SYSCTL_RCGCGPIO_R |= 0x00000020; // (a) activate clock for port F
   while((SYSCTL_PRGPIO_R & 0x00000020) == 0){};
-  GPIO_PORTF_DIR_R &= ~0x10;    // (c) make PF4 in (built-in button)
-  GPIO_PORTF_AFSEL_R &= ~0x10;  //     disable alt funct on PF4
-  GPIO_PORTF_DEN_R |= 0x10;     //     enable digital I/O on PF4   
-  GPIO_PORTF_PCTL_R &= ~0x000F0000; // configure PF4 as GPIO
+  GPIO_PORTF_DIR_R &= ~0x11;    // (c) make PF4 in (built-in button)
+  GPIO_PORTF_AFSEL_R &= ~0x11;  //     disable alt funct on PF4
+  GPIO_PORTF_DEN_R |= 0x11;     //     enable digital I/O on PF4   
+  GPIO_PORTF_PCTL_R &= ~0x000F000F; // configure PF4 as GPIO
   GPIO_PORTF_AMSEL_R = 0;       //     disable analog functionality on PF
-  GPIO_PORTF_PUR_R |= 0x10;     //     enable weak pull-up on PF4
-  GPIO_PORTF_IS_R &= ~0x10;     // (d) PF4 is edge-sensitive
-  GPIO_PORTF_IBE_R |= 0x10;     //     PF4 is both edges
+  GPIO_PORTF_PUR_R |= 0x11;     //     enable weak pull-up on PF4
+  GPIO_PORTF_IS_R &= ~0x11;     // (d) PF4 is edge-sensitive
+  GPIO_PORTF_IBE_R |= 0x11;     //     PF4 is both edges
   GPIOArm();
 
   SYSCTL_RCGCTIMER_R |= 0x01;   // 0) activate TIMER0
   TouchTask = touchtask;           // user function 
-  ReleaseTask = releasetask;       // user function 
+	TouchTask2 = touchtask2; 
+  //ReleaseTask = releasetask;       // user function 
   Touch = 0;                       // allow time to finish activating
   Release = 0;
   Last = PF4;                      // initial switch state
+		
+	Touch2 = 0;                       // allow time to finish activating
+  Release2 = 0;
+	Last2 = PF0;                      // initial switch state
  }
 // Interrupt on rising or falling edge of PF4 (CCP0)
 void GPIOPortF_Handler(void){
-  GPIO_PORTF_IM_R &= ~0x10;     // disarm interrupt on PF4 
+  GPIO_PORTF_IM_R &= ~0x11;     // disarm interrupt on PF4 
   if(Last){    // 0x10 means it was previously released
     Touch = 1;       // touch occurred
     (*TouchTask)();  // execute user task
@@ -91,14 +104,24 @@ void GPIOPortF_Handler(void){
     Release = 1;       // release occurred
     (*ReleaseTask)();  // execute user task
   }
+	
+	if(Last2){    // 0x10 means it was previously released
+    Touch2 = 1;       // touch occurred
+    (*TouchTask2)();  // execute user task
+  }
+  else{
+    Release2 = 1;       // release occurred
+    (*ReleaseTask)();  // execute user task
+  }
   Timer0Arm(); // start one shot
 }
 // Interrupt 10 ms after rising edge of PF4
-void Timer0A_Handler(void){
+/*void Timer0A_Handler(void){
   TIMER0_IMR_R = 0x00000000;    // disarm timeout interrupt
   Last = PF4;  // switch state
+	Last2 = PF0;
   GPIOArm();   // start GPIO
-}
+}*/
 
 // Wait for switch to be pressed 
 // There will be minimum time delay from touch to when this function returns
@@ -125,4 +148,17 @@ void Switch_WaitRelease(void){
 // Outputs: false if switch currently pressed, true if released 
 unsigned long Switch_Input(void){
   return PF4;
+}
+
+void switchread(void){
+	return;
+}
+
+void peepee(void){
+	return;
+}
+
+void reset(void){
+	chiefidx = 0;
+	return;
 }

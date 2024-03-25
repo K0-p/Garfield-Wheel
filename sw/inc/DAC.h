@@ -26,7 +26,10 @@
  * Provided are two possible function declarations. You may modify this based on
  * your implementation and API design.
  */
-
+extern struct omusic{
+	uint32_t note[29];
+	uint32_t duration[29];
+} music;
 
 /**
  * @brief dac_init initializes SPI at pins <TODO: STATE PINS HERE> to
@@ -35,7 +38,7 @@
  * @return int 0 if initialization was successful or a positive integer if an
  *         error occurred. <TODO: LIST ERROR CODES AND POSSIBLE ERROR EVENTS>
  */
-int dac_init();
+void dac_init(uint16_t data);
 
 /**
  * @brief dac_output tells the DAC to output a specified voltage.
@@ -45,4 +48,4 @@ int dac_init();
  * @return int 0 if initialization was successful or a positive integer if an
  *         error occurred. <TODO: LIST ERROR CODES AND POSSIBLE ERROR EVENTS>
  */
-int dac_output(uint16_t data);
+void dac_output(uint16_t data);

@@ -33,16 +33,16 @@ uint32_t LastCallTime;
 #define JITTER_TRIG_VALUE (0xFFFFFFFF-JITTER_SKIP_COUNT)
 
 //Since some functions require the current time, we can setup a hardware timer to run
-void Timer1_Init(void) {
+void Timer2_Init(void) {
     volatile uint32_t delay;
-    SYSCTL_RCGCTIMER_R    |= 0x02;                // 0) activate TIMER1
+    SYSCTL_RCGCTIMER_R    |= 0x04;                // 0) activate TIMER2
     delay                  = SYSCTL_RCGCTIMER_R;  // allow time to finish activating
-    TIMER1_CTL_R           = 0x00000000;          // 1) disable TIMER1A during setup
-    TIMER1_CFG_R           = 0x00000000;          // 2) configure for 32-bit mode
-    TIMER1_TAMR_R          = 0x00000002;          // 3) configure for periodic mode, COUNT-DOWN settings
-    TIMER1_TAILR_R         = 0xFFFFFFFF;          // 4) reload value
-    TIMER1_TAPR_R          = 0;                   // 5) bus clock resolution
-    TIMER1_CTL_R           = 0x00000001;          // 10) enable TIMER1A
+    TIMER2_CTL_R           = 0x00000000;          // 1) disable TIMER1A during setup
+    TIMER2_CFG_R           = 0x00000000;          // 2) configure for 32-bit mode
+    TIMER2_TAMR_R          = 0x00000002;          // 3) configure for periodic mode, COUNT-DOWN settings
+    TIMER2_TAILR_R         = 0xFFFFFFFF;          // 4) reload value
+    TIMER2_TAPR_R          = 0;                   // 5) bus clock resolution
+    TIMER2_CTL_R           = 0x00000001;          // 10) enable TIMER1A
 }
 
 // What should dump init do?
@@ -58,7 +58,7 @@ void DumpInit(void){
     DumpNum = 0;
 
     //Start/Restart timer required for our DumpTimeBuffer.    
-    Timer1_Init();
+    Timer2_Init();
 }
 
 // Use TIMER1_TAR_R as current time.
@@ -92,7 +92,7 @@ void JitterInit(void){
     MinElapsed = 0xFFFFFFFF;
     MaxElapsed = 0;
     LastCallTime = 0;
-    Timer1_Init();      //Note that this reset of the timer can cause odd behavior in your data dump
+    Timer2_Init();      //Note that this reset of the timer can cause odd behavior in your data dump
 }
 
 // We'll define the jitter we want to measure as "peak-to-peak" 
@@ -108,7 +108,7 @@ void JitterInit(void){
 void JitterMeasure(void){
     
     //Record the the current time at start of call
-    uint32_t currTime = TIMER1_TAR_R;
+    uint32_t currTime = TIMER2_TAR_R;
 
     if (MinElapsed > JITTER_TRIG_VALUE){
     

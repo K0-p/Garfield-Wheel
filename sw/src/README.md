@@ -1,1 +1,0 @@
-Do you know how to make a project from scratch?
