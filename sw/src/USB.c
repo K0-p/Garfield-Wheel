@@ -35,35 +35,11 @@
 #include "FIFO.h"
 #include "../inc/UART.h"
 
-#define NVIC_EN0_INT5           0x00000020  // Interrupt 5 enable
-
-#define UART_FR_RXFF            0x00000040  // UART Receive FIFO Full
-#define UART_FR_TXFF            0x00000020  // UART Transmit FIFO Full
-#define UART_FR_RXFE            0x00000010  // UART Receive FIFO Empty
-#define UART_LCRH_WLEN_8        0x00000060  // 8 bit word length
-#define UART_LCRH_FEN           0x00000010  // UART Enable FIFOs
-#define UART_CTL_UARTEN         0x00000001  // UART Enable
-#define UART_IFLS_RX1_8         0x00000000  // RX FIFO >= 1/8 full
-#define UART_IFLS_TX1_8         0x00000000  // TX FIFO <= 1/8 full
-#define UART_IM_RTIM            0x00000040  // UART Receive Time-Out Interrupt
-                                            // Mask
-#define UART_IM_TXIM            0x00000020  // UART Transmit Interrupt Mask
-#define UART_IM_RXIM            0x00000010  // UART Receive Interrupt Mask
-#define UART_RIS_RTRIS          0x00000040  // UART Receive Time-Out Raw
-                                            // Interrupt Status
-#define UART_RIS_TXRIS          0x00000020  // UART Transmit Raw Interrupt
-                                            // Status
-#define UART_RIS_RXRIS          0x00000010  // UART Receive Raw Interrupt
-                                            // Status
-#define UART_ICR_RTIC           0x00000040  // Receive Time-Out Interrupt Clear
-#define UART_ICR_TXIC           0x00000020  // Transmit Interrupt Clear
-#define UART_ICR_RXIC           0x00000010  // Receive Interrupt Clear
-
-
-#define FIFOSIZE   1024       // size of the FIFOs (must be power of 2)
-#define FIFOSUCCESS 1         // return value on success
-#define FIFOFAIL    0         // return value on failure
-                              // create index implementation FIFO (see FIFO.h)
+#include "usblib/usblib.h"
+#include "usblib/usbhid.h"
+#include "usblib/device/usbdevice.h"
+#include "usblib/device/usbdhid.h"
+#include "usblib/device/usbdhidgamepad.h"
 															
 															
 int usbmain(void){
