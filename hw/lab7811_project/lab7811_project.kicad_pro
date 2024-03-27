@@ -247,7 +247,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "lab7811_project.kicad_pro",
+    "filename": "Lab7811_project.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -322,6 +322,11 @@
     "subpart_first_id": 65,
     "subpart_id_separator": 0
   },
-  "sheets": [],
+  "sheets": [
+    [
+      "32bf7da4-0595-43c1-9190-90e95ecff4cc",
+      ""
+    ]
+  ],
   "text_variables": {}
 }
