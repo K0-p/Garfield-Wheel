@@ -5,7 +5,7 @@
 #include "./inc/tm4c123gh6pm.h"
 #include "gyro_depends.h"
 
-#include "TM4C123GH6PM.h"
+//#include "TM4C123GH6PM.h"
 
 void I2C3_Init(void);
 char I2C3_Wr(int slaveAddr, char memAddr, char data);
@@ -64,6 +64,8 @@ void MPU6050_Init(void)
 
 void I2C3_Init(void)
 {
+//SYSCTL_RCGCGPIO_R
+//SYSCTL_RCGCGPIO_R
 SYSCTL->RCGCGPIO  |= 0x00000008 ; // Enable the clock for port D
 SYSCTL->RCGCI2C   |= 0x00000008 ; // Enable the clock for I2C 3
 GPIOD->DEN |= 0x03; // Assert DEN for port D
