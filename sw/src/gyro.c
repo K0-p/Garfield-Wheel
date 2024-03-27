@@ -13,6 +13,11 @@ char I2C3_Rd(int slaveAddr, char memAddr, int byteCount, char* data);
 void Delay(unsigned long counter);
 void MPU6050_Init(void);
 
+int gyromain(void){
+	return -1;
+}
+
+/*
 float[] gyromain(void)
 {
   int  accX, accY, accZ, GyroX, GyroY, GyroZ, Temper; 
@@ -74,102 +79,103 @@ GPIOD->AFSEL |= 0x00000003 ;
 GPIOD->PCTL |= 0x00000033 ;
 GPIOD->ODR |= 0x00000002 ; // SDA (PD1 ) pin as open darin
 I2C3->MCR  = 0x0010 ; // Enable I2C 3 master function
-/* Configure I2C 3 clock frequency
+Configure I2C 3 clock frequency
 (1 + TIME_PERIOD ) = SYS_CLK /(2*
 ( SCL_LP + SCL_HP ) * I2C_CLK_Freq )
 TIME_PERIOD = 16 ,000 ,000/(2(6+4) *100000) - 1 = 7 */
-I2C3->MTPR  = 0x07 ;
-}
 
-/* Wait until I2C master is not busy and return error code */
-/* If there is no error, return 0 */
-static int I2C_wait_till_done(void)
-{
-    while(I2C3->MCS & 1);   /* wait until I2C master is not busy */
-    return I2C3->MCS & 0xE; /* return I2C error code */
-}
+//I2C3->MTPR  = 0x07 ;
+//}
 
-/* Write one byte only */
-/* byte write: S-(saddr+w)-ACK-maddr-ACK-data-ACK-P */
-char I2C3_Wr(int slaveAddr, char memAddr, char data)
-{
+///* Wait until I2C master is not busy and return error code */
+///* If there is no error, return 0 */
+//static int I2C_wait_till_done(void)
+//{
+//    while(I2C3->MCS & 1);   /* wait until I2C master is not busy */
+//    return I2C3->MCS & 0xE; /* return I2C error code */
+//}
 
-    char error;
+///* Write one byte only */
+///* byte write: S-(saddr+w)-ACK-maddr-ACK-data-ACK-P */
+//char I2C3_Wr(int slaveAddr, char memAddr, char data)
+//{
 
-    /* send slave address and starting address */
-    I2C3->MSA = slaveAddr << 1;
-    I2C3->MDR = memAddr;
-    I2C3->MCS = 3;                      /* S-(saddr+w)-ACK-maddr-ACK */
+//    char error;
 
-    error = I2C_wait_till_done();       /* wait until write is complete */
-    if (error) return error;
+//    /* send slave address and starting address */
+//    I2C3->MSA = slaveAddr << 1;
+//    I2C3->MDR = memAddr;
+//    I2C3->MCS = 3;                      /* S-(saddr+w)-ACK-maddr-ACK */
 
-    /* send data */
-    I2C3->MDR = data;
-    I2C3->MCS = 5;                      /* -data-ACK-P */
-    error = I2C_wait_till_done();       /* wait until write is complete */
-    while(I2C3->MCS & 0x40);            /* wait until bus is not busy */
-    error = I2C3->MCS & 0xE;
-    if (error) return error;
+//    error = I2C_wait_till_done();       /* wait until write is complete */
+//    if (error) return error;
 
-    return 0;       /* no error */
-}
-char I2C3_Rd(int slaveAddr, char memAddr, int byteCount, char* data)
-{
-     char error;
-    
-    if (byteCount <= 0)
-        return -1;         /* no read was performed */
+//    /* send data */
+//    I2C3->MDR = data;
+//    I2C3->MCS = 5;                      /* -data-ACK-P */
+//    error = I2C_wait_till_done();       /* wait until write is complete */
+//    while(I2C3->MCS & 0x40);            /* wait until bus is not busy */
+//    error = I2C3->MCS & 0xE;
+//    if (error) return error;
 
-    /* send slave address and starting address */
-    I2C3->MSA = slaveAddr << 1;
-    I2C3->MDR = memAddr;
-    I2C3->MCS = 3;       /* S-(saddr+w)-ACK-maddr-ACK */
-    error = I2C_wait_till_done();
-    if (error)
-        return error;
+//    return 0;       /* no error */
+//}
+//char I2C3_Rd(int slaveAddr, char memAddr, int byteCount, char* data)
+//{
+//     char error;
+//    
+//    if (byteCount <= 0)
+//        return -1;         /* no read was performed */
 
-    /* to change bus from write to read, send restart with slave addr */
-    I2C3->MSA = (slaveAddr << 1) + 1;   /* restart: -R-(saddr+r)-ACK */
+//    /* send slave address and starting address */
+//    I2C3->MSA = slaveAddr << 1;
+//    I2C3->MDR = memAddr;
+//    I2C3->MCS = 3;       /* S-(saddr+w)-ACK-maddr-ACK */
+//    error = I2C_wait_till_done();
+//    if (error)
+//        return error;
 
-    if (byteCount == 1)             /* if last byte, don't ack */
-        I2C3->MCS = 7;              /* -data-NACK-P */
-    else                            /* else ack */
-        I2C3->MCS = 0xB;            /* -data-ACK- */
-    error = I2C_wait_till_done();
-    if (error) return error;
+//    /* to change bus from write to read, send restart with slave addr */
+//    I2C3->MSA = (slaveAddr << 1) + 1;   /* restart: -R-(saddr+r)-ACK */
 
-    *data++ = I2C3->MDR;            /* store the data received */
+//    if (byteCount == 1)             /* if last byte, don't ack */
+//        I2C3->MCS = 7;              /* -data-NACK-P */
+//    else                            /* else ack */
+//        I2C3->MCS = 0xB;            /* -data-ACK- */
+//    error = I2C_wait_till_done();
+//    if (error) return error;
 
-    if (--byteCount == 0)           /* if single byte read, done */
-    {
-        while(I2C3->MCS & 0x40);    /* wait until bus is not busy */
-        return 0;       /* no error */
-    }
- 
-    /* read the rest of the bytes */
-    while (byteCount > 1)
-    {
-        I2C3->MCS = 9;              /* -data-ACK- */
-        error = I2C_wait_till_done();
-        if (error) return error;
-        byteCount--;
-        *data++ = I2C3->MDR;        /* store data received */
-    }
+//    *data++ = I2C3->MDR;            /* store the data received */
 
-    I2C3->MCS = 5;                  /* -data-NACK-P */
-    error = I2C_wait_till_done();
-    *data = I2C3->MDR;              /* store data received */
-    while(I2C3->MCS & 0x40);        /* wait until bus is not busy */
-    
-    return 0;       /* no error */
-}
-		
+//    if (--byteCount == 0)           /* if single byte read, done */
+//    {
+//        while(I2C3->MCS & 0x40);    /* wait until bus is not busy */
+//        return 0;       /* no error */
+//    }
+// 
+//    /* read the rest of the bytes */
+//    while (byteCount > 1)
+//    {
+//        I2C3->MCS = 9;              /* -data-ACK- */
+//        error = I2C_wait_till_done();
+//        if (error) return error;
+//        byteCount--;
+//        *data++ = I2C3->MDR;        /* store data received */
+//    }
+
+//    I2C3->MCS = 5;                  /* -data-NACK-P */
+//    error = I2C_wait_till_done();
+//    *data = I2C3->MDR;              /* store data received */
+//    while(I2C3->MCS & 0x40);        /* wait until bus is not busy */
+//    
+//    return 0;       /* no error */
+//}
+//		
 
 
-void Delay(unsigned long counter)
-{
-	unsigned long i = 0;
-	
-	for(i=0; i< counter*10000; i++);
-}
+//void Delay(unsigned long counter)
+//{
+//	unsigned long i = 0;
+//	
+//	for(i=0; i< counter*10000; i++);
+//}
