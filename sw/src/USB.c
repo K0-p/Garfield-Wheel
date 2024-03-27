@@ -35,11 +35,11 @@
 #include "FIFO.h"
 #include "../inc/UART.h"
 
-#include "usblib/usblib.h"
-#include "usblib/usbhid.h"
-#include "usblib/device/usbdevice.h"
-#include "usblib/device/usbdhid.h"
-#include "usblib/device/usbdhidgamepad.h"
+#include "../lib/usblib/usblib.h"
+#include "../lib/usblib/usbhid.h"
+#include "../lib/usblib/device/usbdevice.h"
+#include "../lib/usblib/device/usbdhid.h"
+#include "../lib/usblib/device/usbdhidgamepad.h"
 															
 															
 int usbmain(void){
