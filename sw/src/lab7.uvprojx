@@ -524,6 +524,21 @@
               <FileType>5</FileType>
               <FilePath>..\inc\UART0int.h</FilePath>
             </File>
+            <File>
+              <FileName>controller.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\controller.c</FilePath>
+            </File>
+            <File>
+              <FileName>controller.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\controller.h</FilePath>
+            </File>
+            <File>
+              <FileName>stringtable.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\stringtable.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

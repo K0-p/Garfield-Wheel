@@ -129,6 +129,10 @@ int main(void) {
 	
 		SysTick_Init();
     //Pause();
+		
+		while(1){
+			//call controller
+		}
 	
     PF1 = 0x02;
     return 1;

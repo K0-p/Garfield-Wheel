@@ -40,8 +40,8 @@
 #include "../lib/usblib/device/usbdevice.h"
 #include "../lib/usblib/device/usbdhid.h"
 #include "../lib/usblib/device/usbdhidgamepad.h"
-															
-															
+								
+
 int usbmain(void){
 	return -1;
 }	
