@@ -3054,7 +3054,7 @@
     )
     (pin "1" (uuid af4fa809-8c71-48d2-a48c-19a312e80522))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR026") (unit 1)
         )
@@ -3080,7 +3080,7 @@
     (pin "1" (uuid d7eaf0a0-3360-4a1c-9c8f-85776feef23f))
     (pin "2" (uuid 22d32759-fe44-435c-92fe-ddd3f4817067))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "R1") (unit 1)
         )
@@ -3105,7 +3105,7 @@
     )
     (pin "1" (uuid 635e8b00-c53b-415d-8900-313653ac0d46))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR029") (unit 1)
         )
@@ -3130,7 +3130,7 @@
     )
     (pin "1" (uuid f591ca4d-2e8f-4a8f-8f84-afac19561359))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR010") (unit 1)
         )
@@ -3156,7 +3156,7 @@
     (pin "1" (uuid 2d2cf496-9ca9-4c85-83a3-3cce609565d6))
     (pin "2" (uuid d0095774-c1af-4d8a-ba38-e5540ac508df))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "R5") (unit 1)
         )
@@ -3182,7 +3182,7 @@
     (pin "1" (uuid 376ffc94-0265-4d0e-b099-8882380b75a0))
     (pin "2" (uuid 45ef2492-5f2e-4b32-979d-fa4fb5573c6d))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "C8") (unit 1)
         )
@@ -3207,7 +3207,7 @@
     )
     (pin "1" (uuid bd04910c-d410-4806-87ab-8b0bdb7891b3))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR015") (unit 1)
         )
@@ -3233,7 +3233,7 @@
     (pin "1" (uuid 5a4bc947-4e0d-4fca-abeb-167f40140451))
     (pin "2" (uuid ccb6b792-a52e-469c-a73a-27a6ce986c6c))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "R6") (unit 1)
         )
@@ -3259,7 +3259,7 @@
     (pin "1" (uuid 465df8b8-73ae-42eb-8a19-ed1512571a45))
     (pin "2" (uuid 9cfd9ba0-1141-4792-9e6d-11ced1c322bc))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "TP2") (unit 1)
         )
@@ -3284,7 +3284,7 @@
     )
     (pin "1" (uuid 0fd5c239-a773-4c80-8877-334c1baf2519))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR01") (unit 1)
         )
@@ -3309,7 +3309,7 @@
     )
     (pin "1" (uuid 30015e0b-9b93-4fe7-950f-002608cf8511))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "H4") (unit 1)
         )
@@ -3334,7 +3334,7 @@
     )
     (pin "1" (uuid fb230604-f7b7-476c-a417-c523b583a296))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "H1") (unit 1)
         )
@@ -3359,7 +3359,7 @@
     )
     (pin "1" (uuid c6cb4ed9-50cb-441c-9f06-45f86029e334))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR017") (unit 1)
         )
@@ -3385,7 +3385,7 @@
     (pin "1" (uuid b85ab128-8168-4992-b766-e6ac87213e92))
     (pin "2" (uuid 3ba04c86-a1e0-417e-a339-1fd7a5b9e5b3))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "C9") (unit 1)
         )
@@ -3410,7 +3410,7 @@
     )
     (pin "1" (uuid 6ea08095-2395-4577-95af-adf98f83b8c8))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR023") (unit 1)
         )
@@ -3435,7 +3435,7 @@
     )
     (pin "1" (uuid 7446290c-c477-412b-96a7-3e31187bc2ff))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR016") (unit 1)
         )
@@ -3484,7 +3484,7 @@
     (pin "8" (uuid e431607e-3581-4c87-afe9-29f720d9855d))
     (pin "9" (uuid 24bb3047-6690-485e-9ab9-f27d011177b4))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "U5") (unit 1)
         )
@@ -3509,7 +3509,7 @@
     )
     (pin "1" (uuid d9fec489-16a4-4e16-a6a0-ef31fa886006))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR025") (unit 1)
         )
@@ -3532,10 +3532,10 @@
     (property "Datasheet" "~" (at 132.08 182.88 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "2" (uuid 9112d796-3b2a-4e8b-8320-dbf8373cd001))
     (pin "1" (uuid 9dcece6c-0ef8-4b2f-9732-e00d05fe7b16))
+    (pin "2" (uuid 9112d796-3b2a-4e8b-8320-dbf8373cd001))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "SW1") (unit 1)
         )
@@ -3560,7 +3560,7 @@
     )
     (pin "1" (uuid c14bc9b7-e508-43f1-8275-1084c7ae08cb))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR06") (unit 1)
         )
@@ -3586,7 +3586,7 @@
     (pin "1" (uuid 065b06f5-2ea1-4bce-be47-cc224e1f27e5))
     (pin "2" (uuid 0f787e11-9fb0-4f74-a37e-c0e481003a3d))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "C3") (unit 1)
         )
@@ -3612,7 +3612,7 @@
     (pin "1" (uuid 83b99ac1-3906-4f1e-9890-6682311b9749))
     (pin "2" (uuid 204bfd3d-ecbf-45fe-8192-58d59792c3b5))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "C1") (unit 1)
         )
@@ -3638,7 +3638,7 @@
     (pin "1" (uuid 5d8d732d-055d-401e-a07b-0a1121aa6d13))
     (pin "2" (uuid 6b47e1af-e64f-4a76-981f-276cdca088f0))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "TP3") (unit 1)
         )
@@ -3664,7 +3664,7 @@
     (pin "1" (uuid 0467cdb1-8592-4410-84e0-040f1a87b022))
     (pin "2" (uuid b874b519-26cf-4926-a5a8-a28074033659))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "R3") (unit 1)
         )
@@ -3681,38 +3681,38 @@
     (property "Value" "MPU-6050" (at 254.9241 144.78 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Footprint" "Sensor_Motion:InvenSense_QFN-24_4x4mm_P0.5mm" (at 252.73 146.05 0)
+    (property "Footprint" "gyroLibrary:PinHeader_1x08_P2.54mm_Vertical" (at 252.73 146.05 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://invensense.tdk.com/wp-content/uploads/2015/02/MPU-6000-Datasheet1.pdf" (at 252.73 129.54 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "12" (uuid 4fcdc323-ef23-4ec4-a99c-504b82654c4a))
-    (pin "15" (uuid 8b41fb2b-547f-43cc-a76d-300e6ebc2fda))
-    (pin "19" (uuid b7555833-6958-4b45-ab02-b66d97d4c951))
-    (pin "10" (uuid f0839f5b-1d52-4c43-8796-d19d4dc2489a))
-    (pin "16" (uuid 72bfd0b3-a241-4417-90ee-7c99c37c7c4b))
-    (pin "17" (uuid c798b208-17de-4f74-b038-f13c51a61ca8))
     (pin "1" (uuid 405fceae-0e7e-457c-8028-1ddeba7cfc6e))
+    (pin "10" (uuid f0839f5b-1d52-4c43-8796-d19d4dc2489a))
+    (pin "11" (uuid 0f1f6b9c-4a40-4f4c-831f-363b19fbce46))
+    (pin "12" (uuid 4fcdc323-ef23-4ec4-a99c-504b82654c4a))
     (pin "13" (uuid 150d985c-a429-46fb-881b-c90f3c7667e3))
     (pin "14" (uuid 7cbddfe1-0765-43d6-aae5-0e1f46ea2d83))
-    (pin "2" (uuid 2e1ed085-6955-4de3-9335-6b5555eda32e))
-    (pin "24" (uuid 2e5fa8ae-1f88-4f8c-b720-d2c2e709bb19))
-    (pin "5" (uuid 77275e80-6e5b-42a8-8c51-6eb83c4c9185))
-    (pin "21" (uuid 46982ccc-6788-49f4-a7b8-9e6264e06d90))
-    (pin "7" (uuid bdc287e9-e8e8-466c-93a9-44bfaa78451e))
-    (pin "23" (uuid 4e28df53-75d6-4d1d-be9e-4afac99f72c6))
-    (pin "22" (uuid 58170236-7770-4356-8526-bf112d75b705))
-    (pin "3" (uuid 4995fd88-c8cd-493c-aea8-94817ebfc7f0))
-    (pin "20" (uuid aa255288-d6a6-4e5c-b0d5-4c130df47365))
-    (pin "6" (uuid 142c411e-2fe5-4574-94fb-a7b3dd80dbc2))
-    (pin "8" (uuid b596afa5-e6e4-400d-bdad-7b78d7642b1a))
+    (pin "15" (uuid 8b41fb2b-547f-43cc-a76d-300e6ebc2fda))
+    (pin "16" (uuid 72bfd0b3-a241-4417-90ee-7c99c37c7c4b))
+    (pin "17" (uuid c798b208-17de-4f74-b038-f13c51a61ca8))
     (pin "18" (uuid d137b0a0-f81f-4c0b-a096-ec705fe119f8))
+    (pin "19" (uuid b7555833-6958-4b45-ab02-b66d97d4c951))
+    (pin "2" (uuid 2e1ed085-6955-4de3-9335-6b5555eda32e))
+    (pin "20" (uuid aa255288-d6a6-4e5c-b0d5-4c130df47365))
+    (pin "21" (uuid 46982ccc-6788-49f4-a7b8-9e6264e06d90))
+    (pin "22" (uuid 58170236-7770-4356-8526-bf112d75b705))
+    (pin "23" (uuid 4e28df53-75d6-4d1d-be9e-4afac99f72c6))
+    (pin "24" (uuid 2e5fa8ae-1f88-4f8c-b720-d2c2e709bb19))
+    (pin "3" (uuid 4995fd88-c8cd-493c-aea8-94817ebfc7f0))
     (pin "4" (uuid 2b063016-fe10-4074-bdd7-3d78a2782d53))
-    (pin "11" (uuid 0f1f6b9c-4a40-4f4c-831f-363b19fbce46))
+    (pin "5" (uuid 77275e80-6e5b-42a8-8c51-6eb83c4c9185))
+    (pin "6" (uuid 142c411e-2fe5-4574-94fb-a7b3dd80dbc2))
+    (pin "7" (uuid bdc287e9-e8e8-466c-93a9-44bfaa78451e))
+    (pin "8" (uuid b596afa5-e6e4-400d-bdad-7b78d7642b1a))
     (pin "9" (uuid 871d5b02-e8c4-4820-9ec0-ed53d3aa1098))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "U1") (unit 1)
         )
@@ -3735,10 +3735,10 @@
     (property "Datasheet" "~" (at 125.73 182.88 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "2" (uuid 9112d796-3b2a-4e8b-8320-dbf8373cd002))
     (pin "1" (uuid 9dcece6c-0ef8-4b2f-9732-e00d05fe7b17))
+    (pin "2" (uuid 9112d796-3b2a-4e8b-8320-dbf8373cd002))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "SW2") (unit 1)
         )
@@ -3779,7 +3779,7 @@
     (pin "1" (uuid c1e7223c-1d95-425c-b89c-969a9973c935))
     (pin "2" (uuid d6c5f4ab-3179-4ffa-a326-26154cb8ce7e))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "Y1") (unit 1)
         )
@@ -3804,7 +3804,7 @@
     )
     (pin "1" (uuid 95afdd92-4020-4b73-900a-05b7238dae39))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR021") (unit 1)
         )
@@ -3830,7 +3830,7 @@
     (pin "1" (uuid 50bc85b3-89a0-43e3-a823-c56cdddb2f63))
     (pin "2" (uuid 90b14b23-c7e3-486e-9d4b-b34f03a219ec))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "TP1") (unit 1)
         )
@@ -3855,7 +3855,7 @@
     )
     (pin "1" (uuid ee2abb4b-b2a3-4e7c-8b27-599462c23d9e))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR011") (unit 1)
         )
@@ -3881,7 +3881,7 @@
     (pin "1" (uuid 070cc562-b65b-40b7-86b4-60b6212a6e5f))
     (pin "2" (uuid b2a04fa3-2ba3-436b-9097-6e6edcba02e2))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "C5") (unit 1)
         )
@@ -3907,7 +3907,7 @@
     (pin "1" (uuid 7591e797-03bd-4db8-a2bc-9c9c2b41f854))
     (pin "2" (uuid 9a05fe63-0599-4339-9538-229b8d301c28))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "C6") (unit 1)
         )
@@ -3932,7 +3932,7 @@
     )
     (pin "1" (uuid 9e72b625-1436-4d97-a6b6-84b977d922cb))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR018") (unit 1)
         )
@@ -3958,7 +3958,7 @@
     (pin "1" (uuid 27208501-361c-4a5e-8afd-425ca2ca9932))
     (pin "2" (uuid 3809f474-622b-45c2-b724-81bef8a66034))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "D1") (unit 1)
         )
@@ -3983,7 +3983,7 @@
     )
     (pin "1" (uuid 49e5cfaf-6885-4700-88b4-10d8c41b4566))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR012") (unit 1)
         )
@@ -4008,7 +4008,7 @@
     )
     (pin "1" (uuid c5620f2e-3cb9-41ea-b1bf-4599a927787f))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR09") (unit 1)
         )
@@ -4034,7 +4034,7 @@
     (pin "1" (uuid f0f28e9d-b7e9-4e21-8bcb-7b61b27fecb4))
     (pin "2" (uuid a8330775-b3a8-4fea-8977-a197259db18b))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "C11") (unit 1)
         )
@@ -4060,7 +4060,7 @@
     (pin "1" (uuid 9e8a8e86-885d-4b10-9611-8a1f9e1bc528))
     (pin "2" (uuid e29ae940-f5e1-4bef-b550-e994eb6ae798))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "C13") (unit 1)
         )
@@ -4086,7 +4086,7 @@
     (pin "1" (uuid 00fec57b-957c-45a5-9ca3-c7c7ce977fd8))
     (pin "2" (uuid b8db8667-daf9-4c8e-a401-d1036dc71dc8))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "C12") (unit 1)
         )
@@ -4111,7 +4111,7 @@
     )
     (pin "1" (uuid 22ef22e0-0454-44b2-b0ac-19ca03fccf37))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR030") (unit 1)
         )
@@ -4136,7 +4136,7 @@
     )
     (pin "1" (uuid e1bc16d9-8cb1-4e8f-b705-4a5a10e5e42e))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR024") (unit 1)
         )
@@ -4161,7 +4161,7 @@
     )
     (pin "1" (uuid 2c437c67-fdd3-47c3-8ebc-323cf6c305b9))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR02") (unit 1)
         )
@@ -4190,7 +4190,7 @@
     (pin "4" (uuid bc1c6be9-7c11-4ccb-bcb7-a386ba18d662))
     (pin "5" (uuid 1b9cc94f-d069-4850-9516-eea70f2fb8f4))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "J2") (unit 1)
         )
@@ -4215,7 +4215,7 @@
     )
     (pin "1" (uuid c65c8c57-df0c-4215-966a-82f92532bc3e))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR019") (unit 1)
         )
@@ -4240,7 +4240,7 @@
     )
     (pin "1" (uuid 4b48b169-6ee7-473b-bdeb-77dedbd31b14))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR020") (unit 1)
         )
@@ -4282,7 +4282,7 @@
     (pin "2" (uuid 2d5ce748-98b1-44a2-99e5-57e7eb5e736b))
     (pin "3" (uuid e4a76eb0-9d5c-4449-87a0-5e1a18a3eea3))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "U4") (unit 1)
         )
@@ -4307,7 +4307,7 @@
     )
     (pin "1" (uuid 6601f7fd-6e40-46b0-90de-ea9aa9ee7458))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR04") (unit 1)
         )
@@ -4333,7 +4333,7 @@
     (pin "1" (uuid 64cb6daf-b69d-42d9-bd93-8657e8c0dc7b))
     (pin "2" (uuid fb085b7e-1bd0-49d8-8010-27f0e353dec0))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "C2") (unit 1)
         )
@@ -4358,7 +4358,7 @@
     )
     (pin "1" (uuid 180647d4-a4b2-4fe1-a85e-0102d1f0bc26))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR03") (unit 1)
         )
@@ -4383,7 +4383,7 @@
     )
     (pin "1" (uuid 3b59361a-127a-440c-99f3-fb072502591f))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "H2") (unit 1)
         )
@@ -4406,36 +4406,36 @@
     (property "Datasheet" "FT232RL-REEL" (at 80.01 77.47 0)
       (effects (font (size 1.27 1.27) italic) hide)
     )
-    (pin "22" (uuid 84df3cae-a59d-4a8b-bd74-80f53614bafd))
-    (pin "7" (uuid e23ba7d9-312a-499f-84c1-cc67e1923b0d))
-    (pin "4" (uuid a9ecd425-d7ec-4f51-9536-8a386c83041c))
-    (pin "9" (uuid b10db26d-a40a-4490-a680-a40e6572c47c))
-    (pin "2" (uuid 9caf5823-4e54-4777-9dbc-0e827aba5db0))
-    (pin "11" (uuid 001f7749-7e6f-4109-a416-77331d5374fb))
-    (pin "14" (uuid f9acbff8-7ed9-436b-9038-d719d6a028c9))
-    (pin "27" (uuid 58da7d65-2cad-420f-9371-4e1465eec6a5))
     (pin "1" (uuid 2aee3d8d-041e-463b-8a8b-0d55f3d68ea7))
+    (pin "10" (uuid bdd52c40-082a-4f06-923b-f97ea359ae53))
+    (pin "11" (uuid 001f7749-7e6f-4109-a416-77331d5374fb))
     (pin "12" (uuid 783669d7-709a-442f-8616-2574699ae67b))
+    (pin "13" (uuid 9bef0cd1-8eaa-418e-8b14-dd059a9f23c4))
+    (pin "14" (uuid f9acbff8-7ed9-436b-9038-d719d6a028c9))
+    (pin "15" (uuid c9a9eb2c-1b0d-4793-810a-e19427a5de6f))
     (pin "16" (uuid 41a0f134-f663-4d7b-970a-6cc48b14874b))
-    (pin "18" (uuid 1e8ef691-a027-42d8-9662-c4593209a8ba))
-    (pin "20" (uuid c7d4eee5-e02d-4041-92e7-e94cf80a274f))
     (pin "17" (uuid 07b2fa5a-fb38-4867-9e1d-b126cb952db4))
-    (pin "25" (uuid e30e2c63-b8ca-4849-bb31-d3a9ecf60aed))
+    (pin "18" (uuid 1e8ef691-a027-42d8-9662-c4593209a8ba))
     (pin "19" (uuid 18a21e44-dc7f-454d-b8ba-451fe3553563))
-    (pin "26" (uuid a218c18f-5171-4c83-90c4-e3a503963e76))
+    (pin "2" (uuid 9caf5823-4e54-4777-9dbc-0e827aba5db0))
+    (pin "20" (uuid c7d4eee5-e02d-4041-92e7-e94cf80a274f))
+    (pin "21" (uuid c8622770-c390-40e9-8902-627f074a00ba))
+    (pin "22" (uuid 84df3cae-a59d-4a8b-bd74-80f53614bafd))
+    (pin "23" (uuid 1cdf9672-0d7a-417d-ace3-6d782f28756a))
     (pin "24" (uuid 4cb85370-953e-4086-9f6b-86b46c3fe472))
+    (pin "25" (uuid e30e2c63-b8ca-4849-bb31-d3a9ecf60aed))
+    (pin "26" (uuid a218c18f-5171-4c83-90c4-e3a503963e76))
+    (pin "27" (uuid 58da7d65-2cad-420f-9371-4e1465eec6a5))
+    (pin "28" (uuid b3eb79f8-4539-439e-9178-bc5e79e4b377))
+    (pin "3" (uuid 4846aee1-2ac4-40f6-b792-e11e9970d073))
+    (pin "4" (uuid a9ecd425-d7ec-4f51-9536-8a386c83041c))
     (pin "5" (uuid d1631ba9-80d3-42d9-bacd-811289224264))
     (pin "6" (uuid 8ffefa66-cee9-4ef5-8eb6-6dfd1d453f81))
-    (pin "21" (uuid c8622770-c390-40e9-8902-627f074a00ba))
-    (pin "13" (uuid 9bef0cd1-8eaa-418e-8b14-dd059a9f23c4))
-    (pin "15" (uuid c9a9eb2c-1b0d-4793-810a-e19427a5de6f))
-    (pin "28" (uuid b3eb79f8-4539-439e-9178-bc5e79e4b377))
-    (pin "10" (uuid bdd52c40-082a-4f06-923b-f97ea359ae53))
+    (pin "7" (uuid e23ba7d9-312a-499f-84c1-cc67e1923b0d))
     (pin "8" (uuid 3fd31ee4-dc60-47c4-b8dd-d9347868fe19))
-    (pin "23" (uuid 1cdf9672-0d7a-417d-ace3-6d782f28756a))
-    (pin "3" (uuid 4846aee1-2ac4-40f6-b792-e11e9970d073))
+    (pin "9" (uuid b10db26d-a40a-4490-a680-a40e6572c47c))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "U3") (unit 1)
         )
@@ -4461,7 +4461,7 @@
     (pin "1" (uuid 0467cdb1-8592-4410-84e0-040f1a87b023))
     (pin "2" (uuid b874b519-26cf-4926-a5a8-a2807403365a))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "R2") (unit 1)
         )
@@ -4487,7 +4487,7 @@
     (pin "1" (uuid 20e01b7b-2ec4-46bf-bf40-21cb9a16c2f9))
     (pin "2" (uuid a2d6f0e6-988b-4b97-9962-4b2051c1728f))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "C10") (unit 1)
         )
@@ -4512,7 +4512,7 @@
     )
     (pin "1" (uuid 2746e2bb-d263-480a-b1e5-2ce648075d89))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR07") (unit 1)
         )
@@ -4537,7 +4537,7 @@
     )
     (pin "1" (uuid 05b7f01c-0d75-45f3-88dd-7bfaf7036abd))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR022") (unit 1)
         )
@@ -4563,7 +4563,7 @@
     (pin "1" (uuid 33cc04c1-264b-42ff-88f7-32e839438cae))
     (pin "2" (uuid 97dbaa05-9d04-4a47-8e3f-962ea8b1063e))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "J1") (unit 1)
         )
@@ -4588,7 +4588,7 @@
     )
     (pin "1" (uuid bdf9327b-264a-4c81-8a5a-ca69467967c1))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR014") (unit 1)
         )
@@ -4613,7 +4613,7 @@
     )
     (pin "1" (uuid 9a7b6eaa-db1d-4e9f-b57f-6685a156014b))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR027") (unit 1)
         )
@@ -4638,7 +4638,7 @@
     )
     (pin "1" (uuid f40e2990-c9ac-42ec-9532-8fa1f899f63b))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "H3") (unit 1)
         )
@@ -4663,7 +4663,7 @@
     )
     (pin "1" (uuid 6eb920fb-3494-4bcd-a230-fc42c79d636d))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR08") (unit 1)
         )
@@ -4686,16 +4686,16 @@
     (property "Datasheet" "~" (at 60.96 134.62 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (pin "6" (uuid f48b9870-681b-468c-8122-6fad5d351c9f))
-    (pin "3" (uuid 8c12a3f3-f4a2-463c-b67a-469c4492ead2))
-    (pin "5" (uuid 533ba1dc-8f42-41f7-88e1-a61ca2688ded))
-    (pin "4" (uuid 9ce9bcbd-55bf-4214-a09d-8dfa0160e701))
-    (pin "8" (uuid 61e31719-1225-4595-a072-3663d5bc154b))
     (pin "1" (uuid 389927cf-25e0-4cb7-ae26-53d0bb6151e4))
     (pin "2" (uuid 6e450986-2d0a-4ecf-851c-408317166bc2))
+    (pin "3" (uuid 8c12a3f3-f4a2-463c-b67a-469c4492ead2))
+    (pin "4" (uuid 9ce9bcbd-55bf-4214-a09d-8dfa0160e701))
+    (pin "5" (uuid 533ba1dc-8f42-41f7-88e1-a61ca2688ded))
+    (pin "6" (uuid f48b9870-681b-468c-8122-6fad5d351c9f))
     (pin "7" (uuid add3bcf6-a1b3-4db1-adba-1cee51015308))
+    (pin "8" (uuid 61e31719-1225-4595-a072-3663d5bc154b))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "J3") (unit 1)
         )
@@ -4721,7 +4721,7 @@
     (pin "1" (uuid 5b32df0d-7d51-4852-ba55-d4cf7ff31760))
     (pin "2" (uuid 02b7610b-de40-4aa8-abed-153f28f5f3dc))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "SW4") (unit 1)
         )
@@ -4747,7 +4747,7 @@
     (pin "1" (uuid a95864d5-2d36-4e5a-9dc7-001c869252a1))
     (pin "2" (uuid 5df0bf28-b55b-4a7f-90e3-5e9c6294cd16))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "C7") (unit 1)
         )
@@ -4772,7 +4772,7 @@
     )
     (pin "1" (uuid afe60359-3900-42ae-b8d7-8ab3b6651530))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR013") (unit 1)
         )
@@ -4797,7 +4797,7 @@
     )
     (pin "1" (uuid f4443512-fc30-4793-ac4a-92c0d75ff0ed))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR028") (unit 1)
         )
@@ -4822,7 +4822,7 @@
     )
     (pin "1" (uuid ee973e35-19d5-4d85-b14a-85dc6bca2d8b))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "#PWR05") (unit 1)
         )
@@ -4848,7 +4848,7 @@
     (pin "1" (uuid 0948497d-9616-4c77-8fef-a9cc63df526a))
     (pin "2" (uuid 22b72b71-02cd-4dd0-b046-6ee088504ad3))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "C4") (unit 1)
         )
@@ -4951,7 +4951,7 @@
     (pin "8" (uuid 1c6923b5-ded1-4267-932d-df9d3461a0cb))
     (pin "9" (uuid be294fa1-3993-41b0-856e-281aec322fab))
     (instances
-      (project "Lab7811_project"
+      (project "lab7811_project"
         (path "/32bf7da4-0595-43c1-9190-90e95ecff4cc"
           (reference "U2") (unit 1)
         )
