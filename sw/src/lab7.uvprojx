@@ -479,6 +479,11 @@
               <FileType>1</FileType>
               <FilePath>..\lib\RGB\RGB.c</FilePath>
             </File>
+            <File>
+              <FileName>usbdbulk.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\lib\usblib\device\usbdbulk.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -530,14 +535,14 @@
               <FilePath>.\controller.c</FilePath>
             </File>
             <File>
-              <FileName>controller.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\controller.h</FilePath>
-            </File>
-            <File>
               <FileName>stringtable.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\stringtable.c</FilePath>
+            </File>
+            <File>
+              <FileName>stringtable.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\stringtable.h</FilePath>
             </File>
           </Files>
         </Group>
