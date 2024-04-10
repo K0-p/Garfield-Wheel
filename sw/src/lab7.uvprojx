@@ -534,16 +534,6 @@
               <FileType>1</FileType>
               <FilePath>.\controller.c</FilePath>
             </File>
-            <File>
-              <FileName>stringtable.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\stringtable.c</FilePath>
-            </File>
-            <File>
-              <FileName>stringtable.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\stringtable.h</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>

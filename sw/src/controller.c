@@ -6,18 +6,9 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "stringtable.h"
+//#include "./usb/examples/boards/ek-tm4c123gxl/garf_wheel/usb_dev_gamepad.c"
 
-#include "../inc/tm4c123gh6pm.h"
-#include "../lib/usblib/device/usbdbulk.h"
-#include "../lib/usblib/usblib.h"
-#include "../lib/usblib/usbhid.h"
-#include "../lib/usblib/device/usbdevice.h"
-#include "../lib/usblib/device/usbdhid.h"
-#include "../lib/usblib/device/usbdhidgamepad.h"
-
-
-int main(void){
-	USBDBulkInit(0, &g_sBulkDevice);
+int cmain(void){
+	//USBDBulkInit(0, &g_sBulkDevice);
 	return 1;
 }
