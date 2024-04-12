@@ -26,6 +26,8 @@
 #ifndef __USBDHIDGAME_H__
 #define __USBDHIDGAME_H__
 
+#include <stdint.h>
+
 //*****************************************************************************
 //
 // If building with a C++ compiler, make all of the definitions in this header
@@ -218,7 +220,8 @@ tUSBDHIDGamepadDevice;
 //*****************************************************************************
 typedef struct
 {
-    //
+    uint8_t ui8Buttons;
+		//
     //! Signed 8-bit value (-128 to 127).
     //
     int8_t i8XPos;
@@ -236,7 +239,7 @@ typedef struct
     //
     //! 8-bit button mapping with button 1 in the LSB.
     //
-    uint8_t ui8Buttons;
+    //uint8_t ui8Buttons;
 	
 
 }
