@@ -21,7 +21,7 @@ void usb_inits(void){
     ROM_GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
     // Open UART0 and show the application name on the UART.
     ConfigureUART();
-    UARTprintf("\bullfart penis mouth\n");
+    UARTprintf("\nbullfart penis mouth\n");
     UARTprintf("---------------------------------\n\n");
     // Not configured initially.
     g_iGamepadState = eStateNotConfigured;

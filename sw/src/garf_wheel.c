@@ -14,8 +14,19 @@
 // * @copyright Copyright (c) 2024
 // * @note Potential Pinouts: (FILL OUT LATER)
 // *    USB:
-// *    Buttons:
-// *    Gyro:
+// *    Buttons (recommended garfield kart keybind):
+// *				MODE 1 [1 pulse LED]: Full controls w/ gyro
+// *				MODE 2 [2 pulse LED]:	No gryo, just use left/right buttons to steer with accelerate auto on
+// *			Start: PD2	(bind to forwards)
+// *			Reset: RST
+// *			Up:		 PE3	(TOGGLE MODE  --  only impacts the following 3 buttons)
+// *			Right: PB5	1:(bind to pause) 		2:(bind to right steering)
+// *			Down:	 PE2	1:(bind to backwards) 2:(bind to toggle off/forwards)
+// *			Left:	 PB4	1:(bind to drift) 		2:(bind to left steering)
+// *    Gyro: (directions subject to change based on mounting)
+// *			X:	Left-right steering
+// *			Y:	Forward-back throw item
+// *			Z:	*unused*	--	would overcomplicate controls
 // *		ST7735:
 
 // Copyright 2024 by Gabriel Moore & Calvin Heischman (copy our code if you dare, it's not even that good you dork)
@@ -42,6 +53,7 @@ __error__(char *pcFilename, uint32_t ui32Line)
 
 int main(void){
     uint8_t ui8ButtonsChanged, ui8Buttons;
+		uint32_t mode = 0;
     bool bUpdate;
     usb_inits();	//inits PLL, GPIO, ADC/GYRO, UART, Buttons, and HID dependencies
 
@@ -60,6 +72,7 @@ int main(void){
             sReport.ui8Buttons = 0;
 
 						//	***	Button Instance	***	//
+						//	*** CHANGE TO OUR OWN BUTTON READER ***	//
             if(ui8Buttons & LEFT_BUTTON){		// Set button 1 if left pressed.
                 sReport.ui8Buttons |= 0x01;
             }
@@ -71,6 +84,7 @@ int main(void){
             }
 
             //	***	ADC Instance	***	//
+						//	*** CHANGE TO OUR OWN GYRO READER ***	//
             if(ADCIntStatus(ADC0_BASE, 0, false) != 0)
             {
                 // Clear the ADC interrupt.
