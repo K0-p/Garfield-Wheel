@@ -9,31 +9,7 @@
 // *
 // * 	I finished my cheeseburger (refer to garf_handler.h)  --  I'm sad it's gone :(
 
-#include <stdbool.h>
-#include <stdint.h>
-#include "inc/hw_memmap.h"
-#include "inc/hw_types.h"
-#include "inc/hw_gpio.h"
-#include "inc/hw_sysctl.h"
-#include "driverlib/adc.h"
-#include "driverlib/debug.h"
-#include "driverlib/gpio.h"
-#include "driverlib/interrupt.h"
-#include "driverlib/pin_map.h"
-#include "driverlib/rom.h"
-#include "driverlib/sysctl.h"
-#include "driverlib/uart.h"
-#include "usblib/usblib.h"
-#include "usblib/usbhid.h"
-#include "usblib/device/usbdevice.h"
-#include "usblib/device/usbdhid.h"
-#include "usblib/device/usbdhidgamepad.h"
-#include "examples/boards/ek-tm4c123gxl/garf_wheel/usb_gamepad_structs.h"
-#include "drivers/buttons.h"
-#include "utils/uartstdio.h"
 #include "garf_handler.h"
-
-
 
 // Handles necessary inits for USB
 void usb_inits(void){
