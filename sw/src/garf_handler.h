@@ -1,3 +1,8 @@
+///**
+// * Defines all necessary dependencies to handle USB protocol
+// * I am eating a cheeseburger at the time of writing this - yummy!
+
+
 #include <stdbool.h>
 #include <stdint.h>
 #include "inc/hw_memmap.h"

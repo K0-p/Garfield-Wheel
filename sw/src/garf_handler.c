@@ -1,3 +1,14 @@
+///**
+// * Initializations needed to handle USB functionality:
+// * 	1) Gyro/ADC
+// * 	2) HID structs
+// * 	3) UART
+// * 	4) PLL
+// * 	5) GPIO
+// * 	6) Buttons
+// *
+// * 	I finished my cheeseburger (refer to garf_handler.h)  --  I'm sad it's gone :(
+
 #include <stdbool.h>
 #include <stdint.h>
 #include "inc/hw_memmap.h"
