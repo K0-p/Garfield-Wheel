@@ -430,6 +430,11 @@
               <FileType>1</FileType>
               <FilePath>.\usb_gamepad_structs.c</FilePath>
             </File>
+            <File>
+              <FileName>tt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\tt.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
