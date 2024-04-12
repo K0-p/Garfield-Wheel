@@ -220,7 +220,6 @@ tUSBDHIDGamepadDevice;
 //*****************************************************************************
 typedef struct
 {
-    uint8_t ui8Buttons;
 		//
     //! Signed 8-bit value (-128 to 127).
     //
@@ -239,7 +238,7 @@ typedef struct
     //
     //! 8-bit button mapping with button 1 in the LSB.
     //
-    //uint8_t ui8Buttons;
+    uint8_t ui8Buttons;
 	
 
 }
