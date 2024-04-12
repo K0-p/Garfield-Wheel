@@ -421,19 +421,19 @@
               <FilePath>..\..\..\..\utils\uartstdio.c</FilePath>
             </File>
             <File>
-              <FileName>usb_dev_gamepad.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\usb_dev_gamepad.c</FilePath>
-            </File>
-            <File>
               <FileName>usb_gamepad_structs.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\usb_gamepad_structs.c</FilePath>
             </File>
             <File>
-              <FileName>tt.c</FileName>
+              <FileName>garf_wheel.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\tt.c</FilePath>
+              <FilePath>..\..\..\..\garf_wheel.c</FilePath>
+            </File>
+            <File>
+              <FileName>garf_handler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\garf_handler.c</FilePath>
             </File>
           </Files>
         </Group>

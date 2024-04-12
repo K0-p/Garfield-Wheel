@@ -430,6 +430,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\garf_wheel.c</FilePath>
             </File>
+            <File>
+              <FileName>garf_handler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\garf_handler.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -453,7 +458,7 @@
             <File>
               <FileName>readme.txt</FileName>
               <FileType>5</FileType>
-              <FilePath>.\readme.txt</FilePath>
+              <FilePath>..\..\..\..\readme.txt</FilePath>
             </File>
           </Files>
         </Group>
