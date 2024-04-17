@@ -1,3 +1,6 @@
+#include <stdint.h>
+#include <stdbool.h>
+
 #pragma once
 // PORT-F  LaunchPAD switches and LEDS
 //

@@ -32,6 +32,7 @@
 // Copyright 2024 by Gabriel Moore & Calvin Heischman (copy our code if you dare, it's not even that good you dork)
 
 #include "garf_handler.h"
+#include "menu.h"
 
 enum garfstate g_iGamepadState;
 // The HID gamepad polled ADC data for the X/Y/Z coordinates.
@@ -67,7 +68,10 @@ int main(void){
 		int8_t xtest = 0;
     uint8_t ui8ButtonsChanged, ui8Buttons;
     bool bUpdate;
+		displayinit();
     usb_inits();	//inits PLL, GPIO, ADC/GYRO, UART, Buttons, and HID dependencies
+	
+		menu();
 
 /* 	Main usb device handling:
 			1) WAIT FOR HOST CONNECTION
