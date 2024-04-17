@@ -131,6 +131,37 @@ const uint8_t * const g_ppui8StringDescriptors[] =
 #define NUM_STRING_DESCRIPTORS (sizeof(g_ppui8StringDescriptors) /            \
                                 sizeof(uint8_t *))
 
+																
+// HID report descriptor for a joystick with X, Y, Z axes and 8 bits for buttons
+const uint8_t g_pui8JoystickReportDescriptor[] =
+{
+    0x05, 0x01,                    // Usage Page (Generic Desktop)
+    0x09, 0x04,                    // Usage (Joystick)
+    0xA1, 0x01,                    // Collection (Application)
+    0x85, 0x00,                    //   Report ID (1)
+    0x05, 0x01,                    //   Usage Page (Generic Desktop)
+    0x15, 0x00,                    //   Logical Minimum (0)
+    0x26, 0xFF, 0x00,              //   Logical Maximum (255)
+    0x75, 0x08,                    //   Report Size (8)
+    0x95, 0x03,                    //   Report Count (3) - X, Y, Z axes
+    0x09, 0x30,                    //   Usage (X)
+    0x09, 0x31,                    //   Usage (Y)
+    0x09, 0x32,                    //   Usage (Z)
+    0x81, 0x02,                    //   Input (Data, Variable, Absolute)
+
+    // Define buttons (8 bits)
+    0x05, 0x09,                    //   Usage Page (Button)
+    0x15, 0x00,                    //   Logical Minimum (0)
+    0x25, 0x01,                    //   Logical Maximum (1)
+    0x75, 0x01,                    //   Report Size (1)
+    0x95, 0x08,                    //   Report Count (8) - 8 buttons
+    0x19, 0x01,                    //   Usage Minimum (Button 1)
+    0x29, 0x08,                    //   Usage Maximum (Button 8)
+    0x81, 0x02,                    //   Input (Data, Variable, Absolute)
+
+    0xC0                           // End Collection
+};
+
 //*****************************************************************************
 //
 // The HID game pad device initialization and customization structures.
@@ -146,6 +177,8 @@ tUSBDHIDGamepadDevice g_sGamepadDevice =
     (void *)&g_sGamepadDevice,
     g_ppui8StringDescriptors,
     NUM_STRING_DESCRIPTORS,
-    0,
-    0
+		//(uint8_t *)&g_pui8JoystickReportDescriptor,
+		//sizeof(g_pui8JoystickReportDescriptor),// Size of the HID report descriptor
+		0,
+		0,
 };

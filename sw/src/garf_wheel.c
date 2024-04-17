@@ -50,10 +50,22 @@ __error__(char *pcFilename, uint32_t ui32Line)
 #define Convert8Bit(ui32Value)  ((int8_t)((0x7ff - ui32Value) >> 4))
 
 
+#include <stdint.h>
+#include <stdbool.h>
+#include "inc/hw_memmap.h"
+#include "inc/hw_types.h"
+#include "driverlib/debug.h"
+#include "driverlib/gpio.h"
+#include "driverlib/sysctl.h"
+#include "driverlib/usb.h"
+#include "usblib/usblib.h"
+#include "usblib/usbhid.h"
+
+
 
 int main(void){
+		int8_t xtest = 0;
     uint8_t ui8ButtonsChanged, ui8Buttons;
-		uint32_t mode = 0;
     bool bUpdate;
     usb_inits();	//inits PLL, GPIO, ADC/GYRO, UART, Buttons, and HID dependencies
 
@@ -75,9 +87,13 @@ int main(void){
 						//	*** CHANGE TO OUR OWN BUTTON READER ***	//
             if(ui8Buttons & LEFT_BUTTON){		// Set button 1 if left pressed.
                 sReport.ui8Buttons |= 0x01;
+								xtest -= 1;
+								if(xtest < -120) xtest = -120;
             }
             if(ui8Buttons & RIGHT_BUTTON){		// Set button 2 if right pressed.
                 sReport.ui8Buttons |= 0x02;
+								xtest += 1;
+							if(xtest > 120) xtest = 120;
             }
             if(ui8ButtonsChanged){
                 bUpdate = true;
@@ -101,6 +117,10 @@ int main(void){
 						
             // Send the report if there was an update.						
             if(bUpdate){		
+								sReport.i8YPos = 0;
+								sReport.i8ZPos = 0;
+								sReport.ui8Buttons = 0;
+								sReport.i8XPos = xtest;
                 USBDHIDGamepadSendReport(&g_sGamepadDevice, &sReport, sizeof(sReport));
                 IntMasterDisable();
                 g_iGamepadState = eStateSending;	//sending data (protected from interrupts)
