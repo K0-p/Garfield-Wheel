@@ -30,7 +30,6 @@
 // *		ST7735:
 
 // Copyright 2024 by Gabriel Moore & Calvin Heischman (copy our code if you dare, it's not even that good you dork)
-
 #include "garf_handler.h"
 #include "menu.h"
 
@@ -50,7 +49,6 @@ __error__(char *pcFilename, uint32_t ui32Line)
 // This maps the values from the ADC that range from 0 to 2047 over to 127 to -128.
 #define Convert8Bit(ui32Value)  ((int8_t)((0x7ff - ui32Value) >> 4))
 
-
 #include <stdint.h>
 #include <stdbool.h>
 #include "inc/hw_memmap.h"
@@ -62,6 +60,7 @@ __error__(char *pcFilename, uint32_t ui32Line)
 #include "usblib/usblib.h"
 #include "usblib/usbhid.h"
 
+#define PB4		(*((volatile uint32_t *)0x40005040))  
 
 
 int main(void){
@@ -77,6 +76,7 @@ int main(void){
 			1) WAIT FOR HOST CONNECTION
 			2) IF DISCONNECT: RETURN TO TOP AND WAIT FOR NEW CONNECTION	*/
     while(1){
+				getbuttons();
         // Wait here until USB device is connected to a host.
         if(g_iGamepadState == eStateIdle)
         {
@@ -118,6 +118,8 @@ int main(void){
                 sReport.i8ZPos = Convert8Bit(g_pui32ADCData[2]);
                 bUpdate = true;
             }
+						
+						
 						
             // Send the report if there was an update.						
             if(bUpdate){		
