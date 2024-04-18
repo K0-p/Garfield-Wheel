@@ -25,3 +25,66 @@ struct buttholes_t getbuttons(uint32_t portD){
 	return buttholes;
 }
 
+// pass in buttons that were all held down at release + the state the handler is in
+// *	States:
+// *		0: start screen
+// *		1: 	menu
+// *		2: 		config
+// *		3: 		info
+// *		4: 		credits
+// *		5: 			in use
+// *	Buttons: [start,up,right,down,left]
+uint32_t press_task(uint32_t state, uint32_t buttons){
+			//printf("butt: %d\n",buttons);
+	//up-down-start = menu
+	//buttons = 11010
+	if(buttons == 26) return 1;
+	
+	//state = start screen
+	if(state == 0){
+		//any press should go to menu
+		if(buttons != 0) return 1;
+		else return 0;
+	}
+	
+	//state = menu
+	if(state == 1){
+		//select
+		if(buttons == 0x10){
+			return 69;
+		}
+		else return 1;
+	}
+	
+	//state = config submenu
+	if(state == 2){
+		//up-down choose game
+		//start select
+		if(buttons == 0x10) return 5;
+		//left = go back
+		if(buttons == 0x1) return 1;
+		else return 2;
+	}
+	
+	//state = info submenu
+	if(state == 3){
+		//menu
+		if(buttons == 0x1) return 1;
+		//start
+		if(buttons != 0) return 5;
+		else return 3;
+	}
+	
+	//state = credits submenu
+	if(state == 4){
+		//menu
+		if(buttons == 0x1) return 1;
+		//start
+		if(buttons != 0) return 5;
+		else return 4;
+	}
+	
+	//state = in use
+	else return 5;
+}
+

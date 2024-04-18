@@ -20,3 +20,4 @@ extern struct buttholes_t{
 };
 
 struct buttholes_t getbuttons(uint32_t portD);
+uint32_t press_task(uint32_t state, uint32_t buttons);

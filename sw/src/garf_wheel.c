@@ -62,12 +62,15 @@ __error__(char *pcFilename, uint32_t ui32Line)
 #include "usblib/usbhid.h"
 
 #define PB4		(*((volatile uint32_t *)0x40005040))  
+	
+struct buttholes_t prev_press;
 
 int main(void){
 		int8_t xtest = 0;
     uint8_t ui8ButtonsChanged, ui8Buttons;
     bool bUpdate;
 		displayinit();
+		prev_press.start = 1;prev_press.up = 1;prev_press.right = 1;prev_press.down = 1;prev_press.left = 1;
     usb_inits();	//inits PLL, GPIO, ADC/GYRO, UART, Buttons, and HID dependencies
 
 /* 	Main usb device handling:
@@ -86,12 +89,24 @@ int main(void){
 						//implementing non-board buttons
 						//start: 0x4, urdl: 0x8,0x10,0x20,0x40
 						struct buttholes_t assfingered = getbuttons(ui32PortD);
-						if(assfingered.start == 0) sReport.ui8Buttons |= 0x4;
-						if(assfingered.up == 0) sReport.ui8Buttons |= 0x8;
-						if(assfingered.right == 0) sReport.ui8Buttons |= 0x10;
-						if(assfingered.down == 0) sReport.ui8Buttons |= 0x20;
-						if(assfingered.left == 0) sReport.ui8Buttons |= 0x40;
-						bUpdate = true;
+						//if buttons are different from previous state
+						if((assfingered.start != prev_press.start)||(assfingered.up != prev_press.up)||(assfingered.right != prev_press.right)||(assfingered.down != prev_press.down)||(assfingered.left != prev_press.left)){
+							//if ass is 1, release task
+							if(assfingered.start == 0) sReport.ui8Buttons |= 0x4;
+							if(assfingered.up == 0) sReport.ui8Buttons |= 0x8;
+							if(assfingered.right == 0) sReport.ui8Buttons |= 0x10;
+							if(assfingered.down == 0) sReport.ui8Buttons |= 0x20;
+							if(assfingered.left == 0) sReport.ui8Buttons |= 0x40;
+							uint32_t new_buttons = ((assfingered.start << 4)+(assfingered.up << 3)+(assfingered.right << 2)+(assfingered.down << 1)+(assfingered.left));
+							prev_press.start = assfingered.start;
+							prev_press.up = assfingered.up;
+							prev_press.right = assfingered.right;
+							prev_press.down = assfingered.down;
+							prev_press.left = assfingered.left;
+							//printf("%d %d %d %d %d\n",assfingered.start,assfingered.up,assfingered.left,assfingered.down,assfingered.right);
+							if((assfingered.start==0)||(assfingered.up==0)||(assfingered.right==0)||(assfingered.left==0)||(assfingered.down==0)) menuhandler(new_buttons);
+							bUpdate = true;
+						}
 					
             // See if the buttons updated.
             ButtonsPoll(&ui8ButtonsChanged, &ui8Buttons);
@@ -131,10 +146,11 @@ int main(void){
 						
 						
             // Send the report if there was an update.						
-            if(bUpdate){		
+            if(bUpdate){	
 								sReport.i8YPos = 0;
 								sReport.i8ZPos = 0;
-								sReport.i8XPos = xtest;
+								sReport.i8XPos = 0;
+								//sReport.i8XPos = xtest;
                 USBDHIDGamepadSendReport(&g_sGamepadDevice, &sReport, sizeof(sReport));
                 IntMasterDisable();
                 g_iGamepadState = eStateSending;	//sending data (protected from interrupts)

@@ -10,4 +10,4 @@
 
 void displayinit(void);
 void menu(void);
-
+void menuhandler(uint32_t butt);
