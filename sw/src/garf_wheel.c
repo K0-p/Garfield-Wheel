@@ -32,6 +32,7 @@
 // Copyright 2024 by Gabriel Moore & Calvin Heischman (copy our code if you dare, it's not even that good you dork)
 #include "garf_handler.h"
 #include "menu.h"
+#include "switches.h"
 
 enum garfstate g_iGamepadState;
 // The HID gamepad polled ADC data for the X/Y/Z coordinates.
@@ -62,33 +63,41 @@ __error__(char *pcFilename, uint32_t ui32Line)
 
 #define PB4		(*((volatile uint32_t *)0x40005040))  
 
-
 int main(void){
 		int8_t xtest = 0;
     uint8_t ui8ButtonsChanged, ui8Buttons;
     bool bUpdate;
 		displayinit();
     usb_inits();	//inits PLL, GPIO, ADC/GYRO, UART, Buttons, and HID dependencies
-	
-		menu();
 
 /* 	Main usb device handling:
 			1) WAIT FOR HOST CONNECTION
 			2) IF DISCONNECT: RETURN TO TOP AND WAIT FOR NEW CONNECTION	*/
     while(1){
-				getbuttons();
+				uint32_t ui32PortD = ROM_GPIOPinRead(GPIO_PORTD_AHB_BASE, GPIO_PIN_2);
         // Wait here until USB device is connected to a host.
         if(g_iGamepadState == eStateIdle)
         {
             // No update by default.
             bUpdate = false;
+					
+						sReport.ui8Buttons = 0;
+					
+						//implementing non-board buttons
+						//start: 0x4, urdl: 0x8,0x10,0x20,0x40
+						struct buttholes_t assfingered = getbuttons(ui32PortD);
+						if(assfingered.start == 0) sReport.ui8Buttons |= 0x4;
+						if(assfingered.up == 0) sReport.ui8Buttons |= 0x8;
+						if(assfingered.right == 0) sReport.ui8Buttons |= 0x10;
+						if(assfingered.down == 0) sReport.ui8Buttons |= 0x20;
+						if(assfingered.left == 0) sReport.ui8Buttons |= 0x40;
+						bUpdate = true;
+					
             // See if the buttons updated.
             ButtonsPoll(&ui8ButtonsChanged, &ui8Buttons);
 
-            sReport.ui8Buttons = 0;
-
 						//	***	Button Instance	***	//
-						//	*** CHANGE TO OUR OWN BUTTON READER ***	//
+						//	*** BASED ON EXAMPLE, CAN DELETE LATER   ---   ONLY FOR DEBUGGING USE (ONBOARD BUTTONS) ***	//
             if(ui8Buttons & LEFT_BUTTON){		// Set button 1 if left pressed.
                 sReport.ui8Buttons |= 0x01;
 								xtest -= 1;
@@ -105,7 +114,7 @@ int main(void){
 
             //	***	ADC Instance	***	//
 						//	*** CHANGE TO OUR OWN GYRO READER ***	//
-            if(ADCIntStatus(ADC0_BASE, 0, false) != 0)
+            /*if(ADCIntStatus(ADC0_BASE, 0, false) != 0)
             {
                 // Clear the ADC interrupt.
                 ADCIntClear(ADC0_BASE, 0);
@@ -117,7 +126,7 @@ int main(void){
                 sReport.i8YPos = Convert8Bit(g_pui32ADCData[1]);
                 sReport.i8ZPos = Convert8Bit(g_pui32ADCData[2]);
                 bUpdate = true;
-            }
+            }*/
 						
 						
 						
@@ -125,7 +134,6 @@ int main(void){
             if(bUpdate){		
 								sReport.i8YPos = 0;
 								sReport.i8ZPos = 0;
-								sReport.ui8Buttons = 0;
 								sReport.i8XPos = xtest;
                 USBDHIDGamepadSendReport(&g_sGamepadDevice, &sReport, sizeof(sReport));
                 IntMasterDisable();

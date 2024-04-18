@@ -26,13 +26,13 @@ void usb_inits(void){
     // Not configured initially.
     g_iGamepadState = eStateNotConfigured;
     // Enable the GPIO peripheral used for USB, and configure the USB pins.
-    ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
-    SysCtlGPIOAHBEnable(SYSCTL_PERIPH_GPIOD);
-    ROM_GPIOPinTypeUSBAnalog(GPIO_PORTD_AHB_BASE, GPIO_PIN_4 | GPIO_PIN_5);
+		ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
+		SysCtlGPIOAHBEnable(SYSCTL_PERIPH_GPIOD);
+		ROM_GPIOPinTypeUSBAnalog(GPIO_PORTD_AHB_BASE, GPIO_PIN_4 | GPIO_PIN_5);
     // Configure the GPIOS for the buttons.
     ButtonsInit();
     // Initialize the ADC channels.
-    ADCInit();
+    //ADCInit();
     // Tell the user what we are up to.
     UARTprintf("Configuring USB\n");
     // Set the USB stack mode to Device mode.
@@ -47,7 +47,7 @@ void usb_inits(void){
     // Tell the user what we are doing and provide some basic instructions.
     UARTprintf("\n8===D\nWaiting For Host...\n");
     // Trigger an initial ADC sequence.
-    ADCProcessorTrigger(ADC0_BASE, 0);
+    //ADCProcessorTrigger(ADC0_BASE, 0);
 }
 
 // Handles asynchronous events from the HID gamepad driver.

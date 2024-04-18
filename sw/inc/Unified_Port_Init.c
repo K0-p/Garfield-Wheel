@@ -130,44 +130,12 @@ void Port_B_Init(void){
   SYSCTL_RCGCGPIO_R     |= 0x02;            // activate port B
   while((SYSCTL_PRGPIO_R & 0x02) == 0){};   // Wait
   
-  // ---------------  Initialize PB7 as M0PWM1  -----------------------  
-
-  GPIO_PORTB_AFSEL_R    |=  0x80;           // enable alt funct on PB7
-  GPIO_PORTB_PCTL_R     &= ~0xF0000000;     // configure PB7 as M0PWM1
-  GPIO_PORTB_PCTL_R     |=  0x40000000;
-  GPIO_PORTB_AMSEL_R    &= ~0x80;           // disable analog functionality on PB7
-  GPIO_PORTB_DEN_R      |=  0x80;           // enable digital I/O on PB7
-
-  // ---------------  Initialize PB6 as M0PWM0  -----------------------
-  GPIO_PORTB_AFSEL_R    |=  0x40;           // enable alt funct on PB6
-  GPIO_PORTB_PCTL_R     &= ~0x0F000000;     // configure PB6 as PWM0
-  GPIO_PORTB_PCTL_R     |=  0x04000000;  
-  GPIO_PORTB_AMSEL_R    &= ~0x40;           // disable analog functionality on PB6
-  GPIO_PORTB_DEN_R      |=  0x40;           // enable digital I/O on PB6
-  
-  // ---------------  Initialize PB5 as AIN11  ----------------------- 
-  GPIO_PORTB_DIR_R      &= ~0x20;           // make PB5 input
-  GPIO_PORTB_AFSEL_R    |=  0x20;           // enable alternate function on PB5
-  GPIO_PORTB_DEN_R      &= ~0x20;           // disable digital I/O on PB5
-  GPIO_PORTB_AMSEL_R    |=  0x20;           // enable analog functionality on PB5
-
-  // ----------------- Initialize PB4 as Timer Capture input (T1CCP0) ---------
-  GPIO_PORTB_DIR_R      &= ~0x10;           // make PB4 input
-  GPIO_PORTB_AFSEL_R    |= 0x10;            // enable alt funct on PB4
-  GPIO_PORTB_DEN_R      |= 0x10;            // enable digital I/O on PB4
-                                            // configure PB4 (T1CCP0)
-  GPIO_PORTB_PCTL_R     = (GPIO_PORTB_PCTL_R 
-                        &  0xFFF0FFFF)
-                        +  0x00070000;
-  GPIO_PORTB_AMSEL_R    &= ~0x10;           // disable analog functionality on PB4
-
-  // ----------------- Initialize PB3-0 as GPIO ---------
-                                      
-  GPIO_PORTB_PCTL_R     &= ~0x0000FFFF;     // GPIO
-  GPIO_PORTB_DIR_R      |=  0x0F;           // make PB3-0 out
-  GPIO_PORTB_AFSEL_R    &= ~0x0F;           // regular port function
-  GPIO_PORTB_DEN_R      |=  0x0F;           // enable digital I/O on PB3-0
-  GPIO_PORTB_AMSEL_R    &= ~0x0F;           // disable analog functionality on PB3-0
+  GPIO_PORTB_PCTL_R     &= ~0xFFFF0000;   // regular GPIO
+  GPIO_PORTB_AMSEL_R    &= ~0xF0;         // disable analog function 
+  GPIO_PORTB_DIR_R      &= ~0xF0;         // inputs on PC7-PC4
+  GPIO_PORTB_AFSEL_R    &= ~0xF0;         // regular port function
+  GPIO_PORTB_PUR_R       =  0xF0;         // enable pull-up on PC7-PC4
+  GPIO_PORTB_DEN_R      |=  0xF0;         // enable digital port 
   
   
   }
@@ -212,32 +180,12 @@ void Port_D_Init(void){
   while((SYSCTL_PRGPIO_R & 0x08)==0){};     // allow time for clock to stabilize
 
   // ---------------  Initialize PB7 as U2TX, PB6 as U2RX  -----------------------  
-    
-  GPIO_PORTD_LOCK_R      = 0x4C4F434B;      // unlock REQUIRED for PD7
-  GPIO_PORTD_CR_R       |= 0xC0;            // commit PD6, PD7
-  
-  GPIO_PORTD_AMSEL_R    &= ~0xC0;           // disable analog functionality on PD6, PD7
-  GPIO_PORTD_AFSEL_R    |=  0xC0;           // enable alternate function on PD6, PD7
-  GPIO_PORTD_DEN_R      |=  0xC0;           // enable digital on PD6, PD7 (PD6 is U2RX, PD7 is U2TX)
-  GPIO_PORTD_PCTL_R      =(GPIO_PORTD_PCTL_R  
-                         & 0x00FFFFFF)
-                         | 0x11000000;      // configure PD6, PD7 as UART
- 
-   // ---------------  Initialize PD2 as AIN5  ----------------------------------  
-   
-  GPIO_PORTD_DIR_R      &= ~0x04;           // make PD2 input
-  GPIO_PORTD_AFSEL_R    |=  0x04;           // enable alternate function on PD2
-  GPIO_PORTD_DEN_R      &= ~0x04;           // disable digital I/O on PD2
-  GPIO_PORTD_AMSEL_R    |=  0x04;           // enable analog functionality on PD2
-
-  // ---------------  Initialize PD3,1,0 as SSI1 MOSI, FS & SCK  ---------------- 
-    
-  GPIO_PORTD_AMSEL_R    &= ~0x0B;           // disable analog functionality on PD
-  GPIO_PORTD_AFSEL_R    |=  0x0B;           // enable alt funct on PD3,1,0
-  GPIO_PORTD_DEN_R      |=  0x0B;           // enable digital I/O on PD3,1,0
-  GPIO_PORTD_PCTL_R      = (GPIO_PORTD_PCTL_R
-                          & 0xFFFF0F00)
-                          + 0x00002022;
+  GPIO_PORTD_PCTL_R     &= ~0x0000FFFF;   // regular GPIO
+  GPIO_PORTD_AMSEL_R    &= ~0x0F;         // disable analog function 
+  GPIO_PORTD_DIR_R      &= ~0x0F;         // inputs on PC7-PC4
+  GPIO_PORTD_AFSEL_R    &= ~0x0F;         // regular port function
+  GPIO_PORTD_PUR_R       =  0x0F;         // enable pull-up on PC7-PC4
+  GPIO_PORTD_DEN_R      |=  0x0F;         // enable digital port 
 }
 
 // ----------------------------------------------------------------------------
@@ -258,31 +206,12 @@ void Port_E_Init(void){
 
  // ---------------  Initialize PE5 as U5TX, PE4 as U5RX  -----------------------  
 
-  GPIO_PORTE_AFSEL_R    |= 0x30;            // enable alt funct on PE5-4
-  GPIO_PORTE_DEN_R      |= 0x30;            // enable digital I/O on PE5-4
-                                            // configure PE5-4 as UART
-  GPIO_PORTE_PCTL_R      = (GPIO_PORTE_PCTL_R
-                         & 0xFF00FFFF)
-                         + 0x00110000;
-  GPIO_PORTE_AMSEL_R    &= ~0x30;           // disable analog functionality on PE
-
- // ---------------  Initialize PE3,1,0 as GPIO  ---------------------------------  
-
-  GPIO_PORTE_DIR_R      |=  0x0A;           // output digital I/O on PE3,1
-  GPIO_PORTE_DIR_R      &= ~0x01;           // input digital I/O on PE0
-  GPIO_PORTE_AMSEL_R    &= ~0x0B;           // disable analog functionality on PE3,1,0
-  GPIO_PORTE_AFSEL_R    &= ~0x0B;           // disable alt funct on PE3,1,0
-  GPIO_PORTE_DEN_R      |=  0x0B;           // enable digital I/O on PE3,1,0
-  
-  GPIO_PORTE_PCTL_R      = (GPIO_PORTE_PCTL_R 
-                         & 0xFFFF0F00);
-  
-// ---------------  Initialize PE2 as AIN1  ---------------------------------  
-  
-  GPIO_PORTE_DIR_R      &= ~0x04;           // make PE2 input
-  GPIO_PORTE_AFSEL_R    |=  0x04;           // enable alternate function on PE2
-  GPIO_PORTE_DEN_R      &= ~0x04;           // disable digital I/O on PE2
-  GPIO_PORTE_AMSEL_R    |=  0x04;           // enable analog functionality on PE2
+  GPIO_PORTE_PCTL_R     &= ~0x0000FFFF;   // regular GPIO
+  GPIO_PORTE_AMSEL_R    &= ~0x0F;         // disable analog function 
+  GPIO_PORTE_DIR_R      &= ~0x0F;         // inputs on PC7-PC4
+  GPIO_PORTE_AFSEL_R    &= ~0x0F;         // regular port function
+  GPIO_PORTE_PUR_R       =  0x0F;         // enable pull-up on PC7-PC4
+  GPIO_PORTE_DEN_R      |=  0x0F;         // enable digital port 
 }
   
 // ----------------------------------------------------------------------------

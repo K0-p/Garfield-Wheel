@@ -11,9 +11,17 @@
 #include "switches.h"
 #include "../inc/tm4c123gh6pm.h"
 
-uint32_t getbuttons(void){
-	uint32_t buttons[5] = {0};
+struct buttholes_t buttholes;
+
+struct buttholes_t getbuttons(uint32_t portD){
+	buttholes.start = (portD)>>2;
+	buttholes.up = (GPIO_PORTE_DATA_R&0x8)>>3;
+	buttholes.right = (GPIO_PORTB_DATA_R&0x20)>>5;
+	buttholes.down = (GPIO_PORTE_DATA_R&0x4)>>2;
+	buttholes.left = (GPIO_PORTB_DATA_R&0x10)>>4;
+	//ST7735_SetCursor(0, 0);
+	//printf("%d %d %d %d %d",buttholes.start,buttholes.up,buttholes.left,buttholes.down,buttholes.right);
 	
-	printf("PB4: %d\n",(GPIO_PORTB_DATA_R&0x10)>>4);
-	return 1;
+	return buttholes;
 }
+

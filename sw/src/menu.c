@@ -8,6 +8,7 @@
 
 #define GARF_TEXT 0x041f
 
+//initial display screen upon device launch
 void displayinit(void){
 	ST7735_InitR(INITR_REDTAB);
 	//ST7735_FillScreen(ST7735_BLACK);
@@ -17,11 +18,10 @@ void displayinit(void){
   int y = 159;	//height-1
 	//inputs: x,y,file,width,heigth
 	ST7735_DrawBitmap(x, y, launch, 128, 160);
-	ST7735_FillRect(20,20,24,24,ST7735_WHITE);
-	ST7735_DrawBitmap(20, 20, head, HEAD__WIDTH, HEAD__HEIGHT);
 	return;
 }
 
+//menu handler
 void menu(void){
 	ST7735_FillScreen(0x0000);
 	ST7735_DrawBitmap(0, MENU_HEIGHT-5, menu_text, 128, MENU_HEIGHT);

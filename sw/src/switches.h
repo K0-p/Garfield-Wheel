@@ -11,4 +11,12 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-uint32_t getbuttons(void);
+extern struct buttholes_t{
+	uint32_t start;
+	uint32_t up;
+	uint32_t right;
+	uint32_t down;
+	uint32_t left;
+};
+
+struct buttholes_t getbuttons(uint32_t portD);
