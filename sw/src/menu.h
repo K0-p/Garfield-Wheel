@@ -8,6 +8,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+extern uint32_t gyro_state;
+
 void displayinit(void);
 void menu(void);
 void menuhandler(uint32_t butt);

@@ -39,6 +39,7 @@ uint32_t press_task(uint32_t state, uint32_t buttons){
 	//up-down-start = menu
 	//buttons = 11010
 	if(buttons == 26) return 1;
+	if(state == 5) return 5;
 	
 	//state = start screen
 	if(state == 0){

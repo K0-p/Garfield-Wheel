@@ -52,6 +52,7 @@ __error__(char *pcFilename, uint32_t ui32Line)
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include "inc/hw_memmap.h"
 #include "inc/hw_types.h"
 #include "driverlib/debug.h"
@@ -65,7 +66,9 @@ __error__(char *pcFilename, uint32_t ui32Line)
 	
 struct buttholes_t prev_press;
 
+
 int main(void){
+		gyro_state = 1;
 		int8_t xtest = 0;
     uint8_t ui8ButtonsChanged, ui8Buttons;
     bool bUpdate;
@@ -88,7 +91,7 @@ int main(void){
 					
 						//implementing non-board buttons
 						//start: 0x4, urdl: 0x8,0x10,0x20,0x40
-						struct buttholes_t assfingered = getbuttons(ui32PortD);
+						/*struct buttholes_t assfingered = getbuttons(ui32PortD);
 						//if buttons are different from previous state
 						if((assfingered.start != prev_press.start)||(assfingered.up != prev_press.up)||(assfingered.right != prev_press.right)||(assfingered.down != prev_press.down)||(assfingered.left != prev_press.left)){
 							//if ass is 1, release task
@@ -104,24 +107,53 @@ int main(void){
 							prev_press.down = assfingered.down;
 							prev_press.left = assfingered.left;
 							//printf("%d %d %d %d %d\n",assfingered.start,assfingered.up,assfingered.left,assfingered.down,assfingered.right);
-							if((assfingered.start==0)||(assfingered.up==0)||(assfingered.right==0)||(assfingered.left==0)||(assfingered.down==0)) menuhandler(new_buttons);
+							//if((assfingered.start==0)||(assfingered.up==0)||(assfingered.right==0)||(assfingered.left==0)||(assfingered.down==0)) menuhandler(new_buttons);
 							bUpdate = true;
-						}
+						}*/
+						
+						gyro_state = 0x1;
+						//update based on gyrostate
+						/*if((gyro_state&0x8)>>3 == 0){
+							if(assfingered.right == 1) sReport.i8XPos = sReport.i8XPos+1;
+							if(assfingered.left == 1) sReport.i8XPos = sReport.i8XPos-1;
+							//update gyro position based on left+right buttons
+							if((gyro_state&0x1) == 1){	//standard mode
+								sReport.i8YPos = 0;
+								sReport.i8ZPos = 0;
+								if(sReport.i8XPos > 120) sReport.i8XPos = 120;
+								if(sReport.i8XPos < -120) sReport.i8XPos = -120;
+							}
+							if((gyro_state&0x2)>>1 == 1){	//drunk driving
+								sReport.i8XPos = rand();
+								sReport.i8YPos = rand();
+								sReport.i8ZPos = rand();
+							}
+							if((gyro_state&0x4)>>2 == 1){	//garfield kart mode
+								if(sReport.i8XPos > 1) sReport.i8XPos = 1;
+								if(sReport.i8XPos < 1) sReport.i8XPos = -1;
+								sReport.i8YPos = 0;
+								sReport.i8ZPos = 0;
+							}
+							//set right and left buttons to 0
+							sReport.ui8Buttons &= ~0x10;
+							sReport.ui8Buttons &= ~0x40;
+						}*/
 					
             // See if the buttons updated.
             ButtonsPoll(&ui8ButtonsChanged, &ui8Buttons);
+						xtest = 0;
 
 						//	***	Button Instance	***	//
 						//	*** BASED ON EXAMPLE, CAN DELETE LATER   ---   ONLY FOR DEBUGGING USE (ONBOARD BUTTONS) ***	//
-            if(ui8Buttons & LEFT_BUTTON){		// Set button 1 if left pressed.
-                sReport.ui8Buttons |= 0x01;
+            if(ui8Buttons & RIGHT_BUTTON){		// Set button 1 if left pressed.
+                //sReport.ui8Buttons |= 0x01;
 								xtest -= 1;
-								if(xtest < -120) xtest = -120;
+								if(xtest < -1) xtest = -1;
             }
-            if(ui8Buttons & RIGHT_BUTTON){		// Set button 2 if right pressed.
-                sReport.ui8Buttons |= 0x02;
+            if(ui8Buttons & LEFT_BUTTON){		// Set button 2 if right pressed.
+                //sReport.ui8Buttons |= 0x02;
 								xtest += 1;
-							if(xtest > 120) xtest = 120;
+							if(xtest > 1) xtest = 1;
             }
             if(ui8ButtonsChanged){
                 bUpdate = true;
@@ -147,10 +179,10 @@ int main(void){
 						
             // Send the report if there was an update.						
             if(bUpdate){	
-								sReport.i8YPos = 0;
-								sReport.i8ZPos = 0;
-								sReport.i8XPos = 0;
-								//sReport.i8XPos = xtest;
+								//sReport.i8YPos = 0;
+								//sReport.i8ZPos = 0;
+								//sReport.i8XPos = 0;
+								sReport.i8XPos = xtest;
                 USBDHIDGamepadSendReport(&g_sGamepadDevice, &sReport, sizeof(sReport));
                 IntMasterDisable();
                 g_iGamepadState = eStateSending;	//sending data (protected from interrupts)
