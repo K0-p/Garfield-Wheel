@@ -495,6 +495,26 @@
               <FileType>5</FileType>
               <FilePath>..\..\..\..\..\inc\Unified_Port_Init.h</FilePath>
             </File>
+            <File>
+              <FileName>usbdhidgamepad.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\usblib\device\usbdhidgamepad.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbdhidgamepad.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\usblib\device\usbdhidgamepad.h</FilePath>
+            </File>
+            <File>
+              <FileName>usbdhid.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\usblib\device\usbdhid.c</FilePath>
+            </File>
+            <File>
+              <FileName>usbdhid.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\..\..\..\usblib\device\usbdhid.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

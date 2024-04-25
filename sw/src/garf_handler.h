@@ -45,7 +45,7 @@ static tGamepadReport sReport;
 // Handles asynchronous events from the HID gamepad driver.
 uint32_t GamepadHandler(void *pvCBData, uint32_t ui32Event, uint32_t ui32MsgData, void *pvMsgData);
 
-extern void usb_inits(void);
+extern void usb_inits(uint32_t pcb);
 
 // Configure the UART and its pins.  This must be called before UARTprintf().
 extern void ConfigureUART(void);

@@ -17,8 +17,10 @@ struct buttholes_t getbuttons(uint32_t portD){
 	buttholes.start = (portD)>>2;
 	buttholes.up = (GPIO_PORTE_DATA_R&0x8)>>3;
 	buttholes.right = (GPIO_PORTB_DATA_R&0x20)>>5;
+	buttholes.right_R = (GPIO_PORTB_DATA_R&0x1);	//B0
 	buttholes.down = (GPIO_PORTE_DATA_R&0x4)>>2;
 	buttholes.left = (GPIO_PORTB_DATA_R&0x10)>>4;
+	buttholes.left_L = (GPIO_PORTB_DATA_R&0x2)>>1;	//B1
 	//ST7735_SetCursor(0, 0);
 	//printf("%d %d %d %d %d",buttholes.start,buttholes.up,buttholes.left,buttholes.down,buttholes.right);
 	

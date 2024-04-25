@@ -16,9 +16,13 @@ uint32_t genable;
 uint32_t gstate;
 
 uint32_t gyro_state;
+uint32_t ged;
+int gedspot;
 
 //initial display screen upon device launch
 void displayinit(void){
+	ged = 0;
+	gedspot = 0;
 	ST7735_InitR(INITR_REDTAB);
 	//ST7735_FillScreen(ST7735_BLACK);
   ST7735_SetCursor(0, 0);
@@ -70,9 +74,36 @@ void submenu(void){
 //gstate(4 bits of data):
 //	xxxx
 // [gyro enabled]	[garf kart] [drunk mode] [standard]
+char std[] = {'S','T','A','N','D','A','R','D'};
 void ingame(void){
+	ST7735_FillScreen(0x0000);
 	gyro_state = gstate;
+	gedspot = -31;
+	ged = 0;
+	ST7735_DrawString(3,4,"ENTERING", GARF_TEXT);
+		while(gedspot !=129){
+			ged++;
+			if(ged == 3){
+				ged = 0;
+				gedspot++;
+					if(gedspot == 20){
+						ST7735_DrawChar(70, 35, '.', GARF_TEXT, 0, 2);
+					}
+					if(gedspot == 45){
+						ST7735_DrawChar(77, 35, '.', GARF_TEXT, 0, 2);
+					}
+					if(gedspot == 70){
+						ST7735_DrawChar(84, 35, '.', GARF_TEXT, 0, 2);
+					}
+					if(gedspot == 95){
+						ST7735_DrawChar(91, 35, '.', GARF_TEXT, 0, 2);
+					}
+			}
+		ST7735_DrawBitmap(gedspot, 137, head, HEAD__WIDTH, HEAD__HEIGHT);
+	}
+	
 	if(((gstate&0x2)>>1) == 1){
+		//ST7735_FillScreen(0x0000);
 		//printf("drunk mode \n");
 		ST7735_DrawBitmap(0, 159, drunk_driving, 128, 160);
 	}
@@ -81,25 +112,60 @@ void ingame(void){
 		ST7735_DrawBitmap(0, 159, launch, 128, 160);
 	}
 	if((gstate&0x1) == 1){
-		//printf("standard \n");
-		ST7735_DrawBitmap(0, 159, gpipe, 128, 160);
+		ST7735_DrawBitmap(0, 159, launch, 128, 160);
+		ST7735_SetCursor(0, 0);
+		//ST7735_DrawChar(int16_t x, int16_t y, char c, int16_t textColor, int16_t bgColor, uint8_t size)
+		//size      number of pixels per character pixel (e.g. size==2 prints each pixel of font as 2x2 square)
+		for(uint32_t i = 0; i<8; i++) ST7735_DrawChar(5+12*i, 1, std[i], 0x1d9d, 0xfdb2, 2);
 	}
 	return;
 }
 
 void config(void){
 	submenu();
-	//ST7735_FillScreen(0x00FF);
+	return;
+}
+
+void headbounce(void){
+	if((menu_state == 3) || (menu_state == 4)){
+		ged++;
+		if(ged == 5){
+			ged = 0;
+			gedspot++;
+			if(gedspot == 129){
+				gedspot = -31;
+				//while(1){}
+			}
+		}
+		ST7735_DrawBitmap(gedspot, 137, head, HEAD__WIDTH, HEAD__HEIGHT);
+	}
 	return;
 }
 
 void info(void){
-	ST7735_FillScreen(0xFF00);
+	ST7735_FillScreen(0x0000);
+	ST7735_DrawString(5,2,"INFORMATION", GARF_TEXT);
+	ST7735_DrawString(1,4,"This system is an", 0x1d9d);
+	ST7735_DrawString(1,5,"HID-compliant game", 0x1d9d);
+	ST7735_DrawString(1,6,"controller. There", 0x1d9d);
+	ST7735_DrawString(1,7,"are 3 modes that can", 0x1d9d);
+	ST7735_DrawString(1,8,"be configured in the", 0x1d9d);
+	ST7735_DrawString(1,9,"config submenu.   :)", 0x1d9d);
+	gedspot = 0;
+	ST7735_DrawString(1,15,"funny cat go vroom", 0x1d9d);
 	return;
 }
 
 void credits(void){
-	ST7735_FillScreen(0x0F0F);
+	ST7735_FillScreen(0x0000);
+	ST7735_DrawString(7,2,"CREDITS", GARF_TEXT);
+	ST7735_DrawString(1,4,"Garfield Wheel is", 0x1d9d);
+	ST7735_DrawString(1,5,"the brainchild of", 0x1d9d);
+	ST7735_DrawString(1,6,"Gabriel Moore and", 0x1d9d);
+	ST7735_DrawString(1,7,"Calvin Heischman in", 0x1d9d);
+	ST7735_DrawString(1,8,"ECE 445L (year 2024)", 0x1d9d);
+	gedspot = 0;
+	ST7735_DrawString(1,15,"--and Garfield (duh)", 0x1d9d);
 	return;
 }
 

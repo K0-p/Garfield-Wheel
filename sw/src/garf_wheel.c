@@ -29,14 +29,23 @@
 // *			Z:	*unused*	--	would overcomplicate controls
 // *		ST7735:
 
+// *    Garfield Binds:
+// *			Left:		turn left
+// *			Right:	turn right
+// *			Start:	drive (TOGGLE)
+// *			Up:			ability forward
+// *			Right:	play/pause
+// *			Down:		ability backward
+// *			Left:		brake
+// *			Back:		drift
+
 // Copyright 2024 by Gabriel Moore & Calvin Heischman (copy our code if you dare, it's not even that good you dork)
 #include "garf_handler.h"
 #include "menu.h"
 #include "switches.h"
 
 enum garfstate g_iGamepadState;
-// The HID gamepad polled ADC data for the X/Y/Z coordinates.
-static uint32_t g_pui32ADCData[3];
+
 // An activity counter to slow the LED blink down to a visible rate.
 static uint32_t g_ui32Updates;
 // The error routine that is called if the driver library encounters an error.
@@ -64,125 +73,91 @@ __error__(char *pcFilename, uint32_t ui32Line)
 
 #define PB4		(*((volatile uint32_t *)0x40005040))  
 	
+//	***	CHANGE BASED ON WHAT YOU'RE RUNNING ON	***	//
+#define PCB false
+
 struct buttholes_t prev_press;
 
 
 int main(void){
+		displayinit();	
 		gyro_state = 1;
-		int8_t xtest = 0;
+		uint32_t hold = 1;
     uint8_t ui8ButtonsChanged, ui8Buttons;
     bool bUpdate;
-		displayinit();
+		//printf("PASS 1\n");
 		prev_press.start = 1;prev_press.up = 1;prev_press.right = 1;prev_press.down = 1;prev_press.left = 1;
-    usb_inits();	//inits PLL, GPIO, ADC/GYRO, UART, Buttons, and HID dependencies
+		//printf("PASS 2\n");
+    usb_inits(PCB);	//inits PLL, GPIO, ADC/GYRO, UART, Buttons, and HID dependencies
+		//printf("PASS 3\n");	
+	
 
 /* 	Main usb device handling:
 			1) WAIT FOR HOST CONNECTION
 			2) IF DISCONNECT: RETURN TO TOP AND WAIT FOR NEW CONNECTION	*/
     while(1){
 				uint32_t ui32PortD = ROM_GPIOPinRead(GPIO_PORTD_AHB_BASE, GPIO_PIN_2);
+				//uint32_t ui32PortD = 1;
         // Wait here until USB device is connected to a host.
+				//printf("PASS MAIN\n");	
+				if(PCB) g_iGamepadState = eStateIdle;
         if(g_iGamepadState == eStateIdle)
-        {
+        {					
             // No update by default.
             bUpdate = false;
 					
+						headbounce();
 						sReport.ui8Buttons = 0;
-					
 						//implementing non-board buttons
 						//start: 0x4, urdl: 0x8,0x10,0x20,0x40
-						/*struct buttholes_t assfingered = getbuttons(ui32PortD);
+						struct buttholes_t assfingered = getbuttons(ui32PortD);
 						//if buttons are different from previous state
-						if((assfingered.start != prev_press.start)||(assfingered.up != prev_press.up)||(assfingered.right != prev_press.right)||(assfingered.down != prev_press.down)||(assfingered.left != prev_press.left)){
+						if((assfingered.start != prev_press.start)||(assfingered.up != prev_press.up)||(assfingered.right != prev_press.right)||(assfingered.down != prev_press.down)||(assfingered.left != prev_press.left)||(assfingered.left_L != prev_press.left_L)||(assfingered.right_R != prev_press.right_R)){
 							//if ass is 1, release task
 							if(assfingered.start == 0) sReport.ui8Buttons |= 0x4;
 							if(assfingered.up == 0) sReport.ui8Buttons |= 0x8;
 							if(assfingered.right == 0) sReport.ui8Buttons |= 0x10;
 							if(assfingered.down == 0) sReport.ui8Buttons |= 0x20;
 							if(assfingered.left == 0) sReport.ui8Buttons |= 0x40;
+						if(assfingered.right_R == 0) sReport.ui8Buttons |= 0x1;
+						if(assfingered.left_L == 0) sReport.ui8Buttons |= 0x2;
 							uint32_t new_buttons = ((assfingered.start << 4)+(assfingered.up << 3)+(assfingered.right << 2)+(assfingered.down << 1)+(assfingered.left));
 							prev_press.start = assfingered.start;
 							prev_press.up = assfingered.up;
 							prev_press.right = assfingered.right;
 							prev_press.down = assfingered.down;
 							prev_press.left = assfingered.left;
+							prev_press.right_R = assfingered.right_R;
+							prev_press.left_L = assfingered.left_L;
 							//printf("%d %d %d %d %d\n",assfingered.start,assfingered.up,assfingered.left,assfingered.down,assfingered.right);
-							//if((assfingered.start==0)||(assfingered.up==0)||(assfingered.right==0)||(assfingered.left==0)||(assfingered.down==0)) menuhandler(new_buttons);
+							if(assfingered.start==0) hold^=1;
+							if((assfingered.start==0)||(assfingered.up==0)||(assfingered.right==0)||(assfingered.left==0)||(assfingered.down==0)) menuhandler(new_buttons);
 							bUpdate = true;
-						}*/
+						}
+						//printf("PASS 4\n");	
 						
-						gyro_state = 0x1;
 						//update based on gyrostate
-						/*if((gyro_state&0x8)>>3 == 0){
-							if(assfingered.right == 1) sReport.i8XPos = sReport.i8XPos+1;
-							if(assfingered.left == 1) sReport.i8XPos = sReport.i8XPos-1;
-							//update gyro position based on left+right buttons
-							if((gyro_state&0x1) == 1){	//standard mode
-								sReport.i8YPos = 0;
-								sReport.i8ZPos = 0;
-								if(sReport.i8XPos > 120) sReport.i8XPos = 120;
-								if(sReport.i8XPos < -120) sReport.i8XPos = -120;
-							}
-							if((gyro_state&0x2)>>1 == 1){	//drunk driving
-								sReport.i8XPos = rand();
-								sReport.i8YPos = rand();
-								sReport.i8ZPos = rand();
-							}
-							if((gyro_state&0x4)>>2 == 1){	//garfield kart mode
-								if(sReport.i8XPos > 1) sReport.i8XPos = 1;
-								if(sReport.i8XPos < 1) sReport.i8XPos = -1;
-								sReport.i8YPos = 0;
-								sReport.i8ZPos = 0;
-							}
-							//set right and left buttons to 0
-							sReport.ui8Buttons &= ~0x10;
-							sReport.ui8Buttons &= ~0x40;
-						}*/
+						if(((gyro_state&0x2)>>1) == 1){
+							//drunk driving
+							sReport.ui8Buttons = rand();
+							sReport.i8XPos = rand();
+							sReport.i8YPos = rand();
+							sReport.i8ZPos = rand();
+						}
+						if(((gyro_state&0x4)>>2) == 1){
+							//garfield kart
+							if(hold == 1) sReport.ui8Buttons |= 0x4;
+							else sReport.ui8Buttons &= ~0x4;
+						}
 					
-            // See if the buttons updated.
+            //	***	Onboard Button Instance	***	//
             ButtonsPoll(&ui8ButtonsChanged, &ui8Buttons);
-						xtest = 0;
+            if(ui8Buttons & RIGHT_BUTTON) sReport.ui8Buttons |= 0x80;
+            if(ui8Buttons & LEFT_BUTTON) sReport.ui8Buttons |= 0x80;
+            if(ui8ButtonsChanged) bUpdate = true;
 
-						//	***	Button Instance	***	//
-						//	*** BASED ON EXAMPLE, CAN DELETE LATER   ---   ONLY FOR DEBUGGING USE (ONBOARD BUTTONS) ***	//
-            if(ui8Buttons & RIGHT_BUTTON){		// Set button 1 if left pressed.
-                //sReport.ui8Buttons |= 0x01;
-								xtest -= 1;
-								if(xtest < -1) xtest = -1;
-            }
-            if(ui8Buttons & LEFT_BUTTON){		// Set button 2 if right pressed.
-                //sReport.ui8Buttons |= 0x02;
-								xtest += 1;
-							if(xtest > 1) xtest = 1;
-            }
-            if(ui8ButtonsChanged){
-                bUpdate = true;
-            }
-
-            //	***	ADC Instance	***	//
-						//	*** CHANGE TO OUR OWN GYRO READER ***	//
-            /*if(ADCIntStatus(ADC0_BASE, 0, false) != 0)
-            {
-                // Clear the ADC interrupt.
-                ADCIntClear(ADC0_BASE, 0);
-                // Read the data and trigger a new sample request.
-                ADCSequenceDataGet(ADC0_BASE, 0, &g_pui32ADCData[0]);
-                ADCProcessorTrigger(ADC0_BASE, 0);
-                // Update the report.
-                sReport.i8XPos = Convert8Bit(g_pui32ADCData[0]);
-                sReport.i8YPos = Convert8Bit(g_pui32ADCData[1]);
-                sReport.i8ZPos = Convert8Bit(g_pui32ADCData[2]);
-                bUpdate = true;
-            }*/
-						
-						
-						
             // Send the report if there was an update.						
-            if(bUpdate){	
-								//sReport.i8YPos = 0;
-								//sReport.i8ZPos = 0;
-								//sReport.i8XPos = 0;
-								sReport.i8XPos = xtest;
+            if(bUpdate && !PCB){	
                 USBDHIDGamepadSendReport(&g_sGamepadDevice, &sReport, sizeof(sReport));
                 IntMasterDisable();
                 g_iGamepadState = eStateSending;	//sending data (protected from interrupts)

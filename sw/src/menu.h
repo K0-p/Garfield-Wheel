@@ -10,6 +10,7 @@
 
 extern uint32_t gyro_state;
 
+void headbounce(void);
 void displayinit(void);
 void menu(void);
 void menuhandler(uint32_t butt);

@@ -12,7 +12,7 @@
 #include "garf_handler.h"
 
 // Handles necessary inits for USB
-void usb_inits(void){
+void usb_inits(uint32_t pcb){
 	// Set the clocking to run from the PLL at 50MHz
     ROM_SysCtlClockSet(SYSCTL_SYSDIV_4 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
     // Enable the GPIO port that is used for the on-board LED.
@@ -23,22 +23,26 @@ void usb_inits(void){
     ConfigureUART();
     UARTprintf("\nbullfart penis mouth\n");
     UARTprintf("---------------------------------\n\n");
+		//printf("INTERPASS A\n");
     // Not configured initially.
     g_iGamepadState = eStateNotConfigured;
-    // Enable the GPIO peripheral used for USB, and configure the USB pins.
-		ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
-		SysCtlGPIOAHBEnable(SYSCTL_PERIPH_GPIOD);
-		ROM_GPIOPinTypeUSBAnalog(GPIO_PORTD_AHB_BASE, GPIO_PIN_4 | GPIO_PIN_5);
+			// Enable the GPIO peripheral used for USB, and configure the USB pins.
+			ROM_SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOD);
+			SysCtlGPIOAHBEnable(SYSCTL_PERIPH_GPIOD);
+			if(!pcb) ROM_GPIOPinTypeUSBAnalog(GPIO_PORTD_AHB_BASE, GPIO_PIN_4 | GPIO_PIN_5);
     // Configure the GPIOS for the buttons.
     ButtonsInit();
+		//printf("INTERPASS B\n");
     // Initialize the ADC channels.
     //ADCInit();
     // Tell the user what we are up to.
     UARTprintf("Configuring USB\n");
     // Set the USB stack mode to Device mode.
     USBStackModeSet(0, eUSBModeForceDevice, 0);
+		//printf("INTERPASS C\n");
     // Pass the device information to the USB library and place the device on the bus.
-    USBDHIDGamepadInit(0, &g_sGamepadDevice);
+    if(!pcb) USBDHIDGamepadInit(0, &g_sGamepadDevice);
+		//printf("INTERPASS D\n");
     // Zero out the initial report.
     sReport.ui8Buttons = 0;
     sReport.i8XPos = 0;
@@ -48,6 +52,7 @@ void usb_inits(void){
     UARTprintf("\n8===D\nWaiting For Host...\n");
     // Trigger an initial ADC sequence.
     //ADCProcessorTrigger(ADC0_BASE, 0);
+		//printf("INTERPASS fin\n");
 }
 
 // Handles asynchronous events from the HID gamepad driver.

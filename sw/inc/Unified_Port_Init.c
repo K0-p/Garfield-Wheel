@@ -130,12 +130,12 @@ void Port_B_Init(void){
   SYSCTL_RCGCGPIO_R     |= 0x02;            // activate port B
   while((SYSCTL_PRGPIO_R & 0x02) == 0){};   // Wait
   
-  GPIO_PORTB_PCTL_R     &= ~0xFFFF0000;   // regular GPIO
-  GPIO_PORTB_AMSEL_R    &= ~0xF0;         // disable analog function 
-  GPIO_PORTB_DIR_R      &= ~0xF0;         // inputs on PC7-PC4
-  GPIO_PORTB_AFSEL_R    &= ~0xF0;         // regular port function
-  GPIO_PORTB_PUR_R       =  0xF0;         // enable pull-up on PC7-PC4
-  GPIO_PORTB_DEN_R      |=  0xF0;         // enable digital port 
+  GPIO_PORTB_PCTL_R     &= ~0xFFFF00FF;   // regular GPIO
+  GPIO_PORTB_AMSEL_R    &= ~0xF3;         // disable analog function 
+  GPIO_PORTB_DIR_R      &= ~0xF3;         // inputs on PC7-PC4
+  GPIO_PORTB_AFSEL_R    &= ~0xF3;         // regular port function
+  GPIO_PORTB_PUR_R       =  0xF3;         // enable pull-up on PC7-PC4
+  GPIO_PORTB_DEN_R      |=  0xF3;         // enable digital port 
   
   
   }

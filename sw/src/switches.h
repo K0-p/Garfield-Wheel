@@ -17,6 +17,8 @@ extern struct buttholes_t{
 	uint32_t right;
 	uint32_t down;
 	uint32_t left;
+	uint32_t right_R;
+	uint32_t left_L;
 };
 
 struct buttholes_t getbuttons(uint32_t portD);
